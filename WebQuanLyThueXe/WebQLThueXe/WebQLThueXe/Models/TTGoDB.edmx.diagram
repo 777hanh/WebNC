@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="12244613dea749dda3ff967171bbab64" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="testDBModel.Account" Width="1.5" PointX="11" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="testDBModel.ChiTietHopDong" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testDBModel.DatXe" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="testDBModel.Gia" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="testDBModel.HopDong" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testDBModel.KHACH" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testDBModel.LoaiNhanVien" Width="1.5" PointX="2.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="testDBModel.LoaiXe" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="testDBModel.NhanVien" Width="1.5" PointX="3.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testDBModel.PhanQuyen" Width="1.5" PointX="8.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="testDBModel.ThanhToan" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="testDBModel.Xe" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="testDBModel.XeRa" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="testDBModel.XeVao" Width="1.5" PointX="5.25" PointY="19" IsExpanded="true" />
+        <AssociationConnector Association="testDBModel.FK_Account_PhanQuyen" ManuallyRouted="false" />
+        <AssociationConnector Association="testDBModel.FK_CTHopDong_HopDong" ManuallyRouted="false" />
+        <AssociationConnector Association="testDBModel.FK_CTHopDong_LoaiXe" ManuallyRouted="false" />
+        <AssociationConnector Association="testDBModel.FK_DatXe_Khach" ManuallyRouted="false" />
+        <AssociationConnector Association="testDBModel.FK_DatXe_LoaiXe" ManuallyRouted="false" />
+        <AssociationConnector Association="testDBModel.FK_Gia_LoaiXe" ManuallyRouted="false" />
+        <AssociationConnector Association="testDBModel.FK_HopDong_Khach" ManuallyRouted="false" />
+        <AssociationConnector Association="testDBModel.FK_Xe_LoaiXe" ManuallyRouted="false" />
+        <AssociationConnector Association="testDBModel.FK_ThanhToan_NhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="testDBModel.FK_XeRa_Xe" ManuallyRouted="false" />
+        <AssociationConnector Association="testDBModel.FK_XeVao_Xe" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
