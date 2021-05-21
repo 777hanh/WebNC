@@ -44,7 +44,7 @@
                     <div class="header-left-bottom agileinfo">
 
                         @*use @Html.BeginForm("Index", "DangKyController",FormMethod.Post)
-                        {*@
+        {*@
                         <form name="SignUpForm" onsubmit="return validateForm()" action="#" method="post">
                             <input type="text" required value="Tên đầy đủ của bạn *" name="ften" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Họ Tên là bắt buộc!';}" />
                             <input type="text" value="Số CMND" name="fcmnd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Số CMND';}" />
@@ -52,11 +52,13 @@
                             <input type="text" required value="Số điện thoại *" name="fsdt" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Số điện thoại là bắt buộc!';}" />
                             <input type="password" required value="Mật khẩu *" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}" />
                             <input type="password" required value="Mật khẩu *" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}" />
-                            
 
-                            <a href="###"><input type="submit" style="   background-color: #04AA6D" value="Đăng ký"></a>
+
+
                         </form>
-                        
+                        <a href="/DangNhap"><input type="submit" style="   background-color: #04AA6D" value="Đăng ký"></a>
+                        <br />
+                        <a href="/DangNhap"><input type="submit" style="margin-top:5%; backdrop-filter:none; background-color:none" value="Đăng nhập"></a>
                     </div>
                 </div>
 

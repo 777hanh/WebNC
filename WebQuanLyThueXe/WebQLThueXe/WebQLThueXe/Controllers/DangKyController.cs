@@ -9,6 +9,7 @@ namespace WebQLThueXe.Controllers
     public class DangKyController : Controller
     {
         // GET: DangKy
+        testDBEntities db = new testDBEntities();
         public ActionResult Index()
         {
             
@@ -20,7 +21,7 @@ namespace WebQLThueXe.Controllers
         {
             if (ModelState.IsValid)
             {     
-            testDBEntities db = new testDBEntities();
+
 
             //thong tin bang KHACH
             KHACH kh1 = new KHACH();
@@ -39,13 +40,14 @@ namespace WebQLThueXe.Controllers
             db.Accounts.Add(acc1);
 
             db.SaveChanges();
-            return RedirectToAction("TrangChu");
+                return RedirectToAction("Index", "DangNhap");
             }
             else 
             {
-                
+                ViewBag.Error = "User đã tồn tại";
+                return View();
             }
-            return View("Index");
+            
         }
     }
 }
