@@ -27,7 +27,7 @@ namespace WebQLThueXe.Controllers
                 if (check == null)
                 {
                     ViewBag.ErrorInfo = "Sai Thong Tin";
-                    return View();
+                    return View("Index");
                 }
                 else
                 {
@@ -35,12 +35,12 @@ namespace WebQLThueXe.Controllers
                     Session["IdA"] = _acc.IdA;
                     Session["PassA"] = _acc.PassA;
                     Session["MaQuyen"] = _acc.MaQuyen;
-                    return RedirectToAction("Index","TrangChu");
+                    return RedirectToAction("../TrangChu");
                 }
             }
             else
             {
-                return View();
+                return View("Index");
             }
         }
         

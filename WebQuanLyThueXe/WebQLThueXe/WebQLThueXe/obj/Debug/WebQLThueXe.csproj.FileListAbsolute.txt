@@ -241,8 +241,8 @@ E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\bin\System.Web.WebPages
 E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\bin\Newtonsoft.Json.xml
 E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\bin\Antlr3.Runtime.pdb
 E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\obj\Debug\WebQLThueXe.csprojAssemblyReference.cache
 E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\obj\Debug\WebQLThueXe.csproj.CoreCompileInputs.cache
 E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\obj\Debug\WebQLThueXe.csproj.CopyComplete
 E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\obj\Debug\WebQLThueXe.dll
 E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\obj\Debug\WebQLThueXe.pdb
+E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\obj\Debug\WebQLThueXe.csprojAssemblyReference.cache
