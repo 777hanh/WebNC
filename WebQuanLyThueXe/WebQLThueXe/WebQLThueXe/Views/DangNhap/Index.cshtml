@@ -1,4 +1,4 @@
-﻿
+﻿@model WebQLThueXe.Models.Account
 @{
     Layout = null;
 }
@@ -29,9 +29,9 @@
 
                     <div class="header-left-bottom agileinfo">
 
-                        <form action="#" method="post">
-                            <input type="text" value="Số điện thoại" name="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User name';}" />
-                            <input type="password" value="Mật khẩu" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}" />
+                        <form action="DangNhapAccount" method="post">
+                            <input type="text" value="Số điện thoại" name="IdA" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User name';}" />
+                            <input type="password" value="Mật khẩu" name="PassA" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}" />
                             <div class="remember">
                                 <span class="checkbox1">
                                     <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Nhớ tôi</label>
@@ -45,9 +45,9 @@
                             <input type="submit" value="Đăng nhập">
                         </form>
                         <div class="header-left-top">
-                            <br/>
+                            <br />
                             <div style="color:white; font-size: 20px; text-align: center;">Bạn chưa có tài khoản?</div>
-                            <br/>
+                            <br />
                         </div>
                         <a href="~/DangKy"><input type="submit" style="  background-color: #04AA6D" value="Đăng Ký"></a>
 
@@ -62,5 +62,7 @@
         <p>©TTGo 2021. All rights reserved</p>
     </div>
     <!--footer end here-->
+
+
 </body>
 </html>

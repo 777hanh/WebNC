@@ -12,7 +12,7 @@ namespace WebQLThueXe.Controllers
         testDBEntities db = new testDBEntities();
         public ActionResult Index()
         {
-            
+
             return View();
         }
 
@@ -20,34 +20,40 @@ namespace WebQLThueXe.Controllers
         public ActionResult Index(KhachHang kh)
         {
             if (ModelState.IsValid)
-            {     
-
-
-            //thong tin bang KHACH
-            KHACH kh1 = new KHACH();
-            kh1.MaKhach = kh.maKH;
-            kh1.TenKhach = kh.TenKhach;
-            kh1.CMND = kh.Cmnd;
-            kh1.Mail = kh.Mail;
-            kh1.SDT = kh.Sdt;
-            db.KHACHes.Add(kh1);
-            
-            //thong tin bang Account
-            Account acc1 = new Account();
-            acc1.IdA = kh.Sdt;
-            acc1.PassA = kh.Password;
-            acc1.MaQuyen = 3;
-            db.Accounts.Add(acc1);
-
-            db.SaveChanges();
-                return RedirectToAction("Index", "DangNhap");
-            }
-            else 
             {
-                ViewBag.Error = "User đã tồn tại";
-                return View();
+                var check_sdt = db.Accounts.Where(s => s.IdA == kh.Sdt).FirstOrDefault();
+                if (check_sdt == null)
+                {
+                    db.Configuration.ValidateOnSaveEnabled = false;
+
+                    //thong tin bang KHACH
+                    KHACH kh1 = new KHACH();
+                    kh1.MaKhach = kh.maKH;
+                    kh1.TenKhach = kh.TenKhach;
+                    kh1.CMND = kh.Cmnd;
+                    kh1.Mail = kh.Mail;
+                    kh1.SDT = kh.Sdt;
+                    db.KHACHes.Add(kh1);
+
+                    //thong tin bang Account
+                    Account acc1 = new Account();
+                    acc1.IdA = kh.Sdt;
+                    acc1.PassA = kh.Password;
+                    acc1.MaQuyen = 3;
+                    db.Accounts.Add(acc1);
+
+                    db.SaveChanges();
+                    
+                    return RedirectToAction("Index", "DangNhap");
+                }
+
+                else
+                {
+                    ViewBag.Error = "User đã tồn tại";
+                    return View();
+                }
             }
-            
+            return View();
         }
     }
 }

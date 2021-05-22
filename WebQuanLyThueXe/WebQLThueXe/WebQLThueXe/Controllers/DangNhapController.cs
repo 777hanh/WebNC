@@ -17,8 +17,32 @@ namespace WebQLThueXe.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult DangNhapAccount(Account _acc)
+        {
+            if (ModelState.IsValidField("IdA"))
+            {
 
-        
+                var check = db.Accounts.Where(s => s.IdA == _acc.IdA && s.PassA == _acc.PassA).FirstOrDefault();
+                if (check == null)
+                {
+                    ViewBag.ErrorInfo = "Sai Thong Tin";
+                    return View();
+                }
+                else
+                {
+                    db.Configuration.ValidateOnSaveEnabled = false;
+                    Session["IdA"] = _acc.IdA;
+                    Session["PassA"] = _acc.PassA;
+                    Session["MaQuyen"] = _acc.MaQuyen;
+                    return RedirectToAction("Index","TrangChu");
+                }
+            }
+            else
+            {
+                return View();
+            }
+        }
         
     }
 }
