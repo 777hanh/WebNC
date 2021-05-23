@@ -1,7 +1,5 @@
 ﻿@model WebQLThueXe.Models.Account
-    @using (Html.BeginForm("DangNhapAccount", "DangNhap"))
-    {
-        @Html.AntiForgeryToken()
+    
     <!DOCTYPE HTML>
     <html>
 
@@ -21,51 +19,57 @@
         <link href='../../Assets//fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <!--header start here-->
-        <div class="header">
-            <div class="header-main">
-                <h1>Đăng nhập</h1>
-                <div class="header-bottom">
-                    <div class="header-right w3agile">
+       
+            <!--header start here-->
+            <div class="header">
+                <div class="header-main">
+                    <h1>Đăng nhập</h1>
+                    <div class="header-bottom">
+                        <div class="header-right w3agile">
 
-                        <div class="header-left-bottom agileinfo">
-                            <form action="" method="post">
-                                <input type="text" value="Số điện thoại" name="IdA" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Name';}" />
-                                <input type="password" value="Mật khẩu" name="PassA" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}" />
-                                <div class="remember">
-                                    <span class="checkbox1">
-                                        <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Nhớ tôi</label>
-                                    </span>
-                                    <div class="forgot">
-                                        <h6><a href="#">Quên mật khẩu?</a></h6>
-                                    </div>
-                                    <div class="clear"> </div>
-                                </div>
-                                @if (ViewBag.Message != null)
+                            <div class="header-left-bottom agileinfo">
+                                @using (Html.BeginForm("DangNhapAccount", "DangNhap"))
                                 {
-                                    <p class="error">@ViewBag.ErrorInfo</p>
+                                    @Html.AntiForgeryToken()
+                                    <form action="DangNhapAccount" method="post">
+                                        <input type="text" value="Số điện thoại" name="IdA" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Name';}" />
+                                        <input type="password" value="Mật khẩu" name="PassA" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}" />
+                                        <div class="remember">
+                                            <span class="checkbox1">
+                                                <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Nhớ tôi</label>
+                                            </span>
+                                            <div class="forgot">
+                                                <h6><a href="#">Quên mật khẩu?</a></h6>
+                                            </div>
+                                            <div class="clear"> </div>
+                                        </div>
+                                        @if (ViewBag.Message != null)
+                                        {
+                                            <p class="error">@ViewBag.ErrorInfo</p>
+                                        }
+                                        <input type="submit" value="Đăng nhập">
+                                    </form>
+                                    <div class="header-left-top">
+                                        <br />
+                                        <div style="color:white; font-size: 20px; text-align: center;">Bạn chưa có tài khoản?</div>
+                                        <br />
+                                    </div>
                                 }
-                                <input type="submit" value="Đăng nhập">
-                            </form>
-                            <div class="header-left-top">
-                                <br />
-                                <div style="color:white; font-size: 20px; text-align: center;">Bạn chưa có tài khoản?</div>
-                                <br />
-                            </div>
-                            <a href="../DangKy"><input type="submit" style="  background-color: #04AA6D" value="Đăng Ký"></a>
+                                    <a href="/DangKy"><input type="submit" style="  background-color: #04AA6D" value="Đăng Ký"></a>
+                                </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--header end here-->
-        <div class="copyright">
-            <p>©TTGo 2021. All rights reserved</p>
-        </div>
-        <!--footer end here-->
-        
+        }
+            <!--header end here-->
+            <div class="copyright">
+                <p>©TTGo 2021. All rights reserved</p>
+            </div>
+            <!--footer end here-->
 
-    </body>
+
+        </body>
 </html>
-    }
+    
