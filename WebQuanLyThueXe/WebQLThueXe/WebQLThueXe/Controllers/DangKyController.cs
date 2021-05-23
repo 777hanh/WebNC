@@ -27,6 +27,10 @@ namespace WebQLThueXe.Controllers
                     db.Configuration.ValidateOnSaveEnabled = false;
                     _acc.MaQuyen = 2;
                     db.Accounts.Add(_acc);
+                    KHACH _khach = new KHACH();
+                    _khach.TenKhach = _acc.TenUser;
+                    _khach.SDT = _acc.IdA;
+                    db.KHACHes.Add(_khach);
                     db.SaveChanges();
                     return RedirectToAction("Index","TrangChu");
                 }
