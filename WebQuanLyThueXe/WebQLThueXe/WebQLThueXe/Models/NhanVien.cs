@@ -23,7 +23,13 @@ namespace WebQLThueXe.Models
         public string MaNV { get; set; }
         public int MaLoaiNV { get; set; }
         public string TenNV { get; set; }
+        public string DiaChi { get; set; }
+        public string Mail { get; set; }
+        public Nullable<int> CMND { get; set; }
+        public string SDT { get; set; }
     
+        public virtual Account Account { get; set; }
+        public virtual LoaiNhanVien LoaiNhanVien { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThanhToan> ThanhToans { get; set; }
     }

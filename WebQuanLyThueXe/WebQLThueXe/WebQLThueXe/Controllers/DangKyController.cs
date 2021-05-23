@@ -27,7 +27,7 @@ namespace WebQLThueXe.Controllers
                     db.Configuration.ValidateOnSaveEnabled = false;
 
                     //thong tin bang KHACH
-                    KHACH kh1 = new KHACH();
+                    var kh1 = new KHACH();
                     kh1.MaKhach = kh.maKH;
                     kh1.TenKhach = kh.TenKhach;
                     kh1.CMND = kh.Cmnd;

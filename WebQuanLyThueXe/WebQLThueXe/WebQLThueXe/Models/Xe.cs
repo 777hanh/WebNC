@@ -26,6 +26,7 @@ namespace WebQLThueXe.Models
         public Nullable<int> BienSo { get; set; }
         public string TenXe { get; set; }
         public string MoTa { get; set; }
+        public Nullable<float> GiaLoaiXe { get; set; }
         public Nullable<bool> TinhTrang { get; set; }
     
         public virtual LoaiXe LoaiXe { get; set; }

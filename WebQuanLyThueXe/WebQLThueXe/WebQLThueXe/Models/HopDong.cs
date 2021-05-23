@@ -14,6 +14,12 @@ namespace WebQLThueXe.Models
     
     public partial class HopDong
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public HopDong()
+        {
+            this.ThanhToans = new HashSet<ThanhToan>();
+        }
+    
         public int SoHD { get; set; }
         public Nullable<System.DateTime> Ngay { get; set; }
         public int MaKhach { get; set; }
@@ -25,5 +31,7 @@ namespace WebQLThueXe.Models
     
         public virtual ChiTietHopDong ChiTietHopDong { get; set; }
         public virtual KHACH KHACH { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThanhToan> ThanhToans { get; set; }
     }
 }

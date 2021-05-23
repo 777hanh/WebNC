@@ -7,6 +7,7 @@
           <ScalarProperty Name="IdA" ColumnName="IdA" />
           <ScalarProperty Name="PassA" ColumnName="PassA" />
           <ScalarProperty Name="MaQuyen" ColumnName="MaQuyen" />
+          <ScalarProperty Name="TenUser" ColumnName="TenUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -34,15 +35,6 @@
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="NgayHenLay" ColumnName="NgayHenLay" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Gias">
-      <EntityTypeMapping TypeName="testDBModel.Gia">
-        <MappingFragment StoreEntitySet="Gia">
-          <ScalarProperty Name="MaGia" ColumnName="MaGia" />
-          <ScalarProperty Name="MaLoaiXe" ColumnName="MaLoaiXe" />
-          <ScalarProperty Name="GiaXe" ColumnName="GiaXe" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -98,6 +90,10 @@
           <ScalarProperty Name="MaNV" ColumnName="MaNV" />
           <ScalarProperty Name="MaLoaiNV" ColumnName="MaLoaiNV" />
           <ScalarProperty Name="TenNV" ColumnName="TenNV" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -128,6 +124,7 @@
           <ScalarProperty Name="BienSo" ColumnName="BienSo" />
           <ScalarProperty Name="TenXe" ColumnName="TenXe" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="GiaLoaiXe" ColumnName="GiaLoaiXe" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
         </MappingFragment>
       </EntityTypeMapping>

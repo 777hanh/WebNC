@@ -35,7 +35,7 @@ namespace WebQLThueXe.Controllers
                     Session["IdA"] = _acc.IdA;
                     Session["PassA"] = _acc.PassA;
                     Session["MaQuyen"] = _acc.MaQuyen;
-                    return RedirectToAction("../TrangChu");
+                    return RedirectToAction("Index", "TrangChu");
                 }
             }
             else

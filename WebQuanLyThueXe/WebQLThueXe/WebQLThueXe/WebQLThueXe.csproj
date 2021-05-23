@@ -144,9 +144,6 @@
     <Compile Include="Models\DatXe.cs">
       <DependentUpon>TTGoDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Gia.cs">
-      <DependentUpon>TTGoDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\HopDong.cs">
       <DependentUpon>TTGoDB.tt</DependentUpon>
     </Compile>
@@ -361,8 +358,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\TTGoDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TTGoDB.Context.cs</LastGenOutput>
       <DependentUpon>TTGoDB.edmx</DependentUpon>
+      <LastGenOutput>TTGoDB.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\TTGoDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

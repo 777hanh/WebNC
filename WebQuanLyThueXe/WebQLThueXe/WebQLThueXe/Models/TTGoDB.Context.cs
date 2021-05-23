@@ -28,7 +28,6 @@ namespace WebQLThueXe.Models
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<ChiTietHopDong> ChiTietHopDongs { get; set; }
         public virtual DbSet<DatXe> DatXes { get; set; }
-        public virtual DbSet<Gia> Gias { get; set; }
         public virtual DbSet<HopDong> HopDongs { get; set; }
         public virtual DbSet<KHACH> KHACHes { get; set; }
         public virtual DbSet<LoaiNhanVien> LoaiNhanViens { get; set; }

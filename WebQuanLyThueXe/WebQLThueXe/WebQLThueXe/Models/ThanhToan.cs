@@ -20,6 +20,7 @@ namespace WebQLThueXe.Models
         public string LyDo { get; set; }
         public string MaNV { get; set; }
     
+        public virtual HopDong HopDong { get; set; }
         public virtual NhanVien NhanVien { get; set; }
     }
 }

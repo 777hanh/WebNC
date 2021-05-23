@@ -36,7 +36,8 @@ CREATE TABLE [dbo].[PhanQuyen](
 CREATE TABLE [dbo].[Account](
 	[IdA]			char(20)			NOT NULL,
 	[PassA]			varchar(25)			NOT NULL,
-	[MaQuyen]		int			NOT NULL,
+	[MaQuyen]		int					NOT NULL,
+	[TenUser]		nvarchar(40)		NOT NULL,
 	PRIMARY KEY CLUSTERED ([IdA] ASC),
 	CONSTRAINT [FK_Account_PhanQuyen] FOREIGN KEY ([MaQuyen]) REFERENCES [dbo].[PhanQuyen] ([MaQuyen])
 );
@@ -52,7 +53,7 @@ CREATE TABLE [dbo].[KHACH](
 	[NganHang]		varchar(MAX)		NULL,
 	[SoTK]			char(20)			NULL,
 	PRIMARY KEY CLUSTERED ([MaKhach] ASC),
-	CONSTRAINT [FK_Khach_Account] FOREIGN KEY ([SDT]) REFERENCES [dbo].[Account] ([IdA])
+	CONSTRAINT [FK_Khach_Account_ID] FOREIGN KEY ([SDT]) REFERENCES [dbo].[Account] ([IdA]),
 );
 --Bang Loai NV
 CREATE TABLE [dbo].[LoaiNhanVien](
@@ -65,14 +66,14 @@ CREATE TABLE [dbo].[LoaiNhanVien](
 CREATE TABLE [dbo].[NhanVien](
 	[MaNV]			varchar(25)			NOT NULL,
 	[MaLoaiNV]		int					NOT NULL,
-	[TenNV]			nvarchar(MAX)		NOT NULL,
+	[TenNV]			nvarchar(40)		NOT NULL,
 	[DiaChi]		nvarchar(MAX)		NULL,
 	[Mail]			varchar(MAX)		NULL,
 	[CMND]			int					NULL,
 	[SDT]			char(20)			NOT NULL, --Tên đăng nhập
 	PRIMARY KEY CLUSTERED ([MaNV] ASC),
 	CONSTRAINT [FK_NV_LoaiNV] FOREIGN KEY ([MaLoaiNV]) REFERENCES [dbo].[LoaiNhanVien] ([MaLoaiNV]),
-	CONSTRAINT [FK_NV_Account] FOREIGN KEY ([SDT]) REFERENCES [dbo].[Account] ([IdA])
+	CONSTRAINT [FK_NV_Account_ID] FOREIGN KEY ([SDT]) REFERENCES [dbo].[Account] ([IdA]),
 
 );
 

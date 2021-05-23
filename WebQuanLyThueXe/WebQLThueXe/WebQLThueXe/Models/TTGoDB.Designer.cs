@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Manh Thong\Nam 3\Do An web nam 3\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\Models\TTGoDB.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\Models\TTGoDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

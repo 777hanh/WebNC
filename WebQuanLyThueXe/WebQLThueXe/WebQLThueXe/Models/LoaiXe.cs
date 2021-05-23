@@ -19,7 +19,6 @@ namespace WebQLThueXe.Models
         {
             this.ChiTietHopDongs = new HashSet<ChiTietHopDong>();
             this.DatXes = new HashSet<DatXe>();
-            this.Gias = new HashSet<Gia>();
             this.Xes = new HashSet<Xe>();
         }
     
@@ -32,8 +31,6 @@ namespace WebQLThueXe.Models
         public virtual ICollection<ChiTietHopDong> ChiTietHopDongs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DatXe> DatXes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Gia> Gias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Xe> Xes { get; set; }
     }

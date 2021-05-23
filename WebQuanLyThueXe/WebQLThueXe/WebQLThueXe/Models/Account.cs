@@ -14,10 +14,22 @@ namespace WebQLThueXe.Models
     
     public partial class Account
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Account()
+        {
+            this.KHACHes = new HashSet<KHACH>();
+            this.NhanViens = new HashSet<NhanVien>();
+        }
+    
         public string IdA { get; set; }
         public string PassA { get; set; }
         public int MaQuyen { get; set; }
+        public string TenUser { get; set; }
     
         public virtual PhanQuyen PhanQuyen { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KHACH> KHACHes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NhanVien> NhanViens { get; set; }
     }
 }

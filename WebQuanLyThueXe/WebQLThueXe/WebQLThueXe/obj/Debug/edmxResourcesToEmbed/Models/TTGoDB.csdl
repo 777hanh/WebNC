@@ -4,10 +4,13 @@
     <Key>
       <PropertyRef Name="IdA" />
     </Key>
-    <Property Name="IdA" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdA" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="PassA" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MaQuyen" Type="Int32" Nullable="false" />
+    <Property Name="TenUser" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="PhanQuyen" Relationship="Self.FK_Account_PhanQuyen" FromRole="Account" ToRole="PhanQuyen" />
+    <NavigationProperty Name="KHACHes" Relationship="Self.FK_Khach_Account_ID" FromRole="Account" ToRole="KHACH" />
+    <NavigationProperty Name="NhanViens" Relationship="Self.FK_NV_Account_ID" FromRole="Account" ToRole="NhanVien" />
   </EntityType>
   <EntityType Name="ChiTietHopDong">
     <Key>
@@ -38,15 +41,6 @@
     <NavigationProperty Name="KHACH" Relationship="Self.FK_DatXe_Khach" FromRole="DatXe" ToRole="KHACH" />
     <NavigationProperty Name="LoaiXe" Relationship="Self.FK_DatXe_LoaiXe" FromRole="DatXe" ToRole="LoaiXe" />
   </EntityType>
-  <EntityType Name="Gia">
-    <Key>
-      <PropertyRef Name="MaGia" />
-    </Key>
-    <Property Name="MaGia" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="MaLoaiXe" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="GiaXe" Type="Single" />
-    <NavigationProperty Name="LoaiXe" Relationship="Self.FK_Gia_LoaiXe" FromRole="Gia" ToRole="LoaiXe" />
-  </EntityType>
   <EntityType Name="HopDong">
     <Key>
       <PropertyRef Name="SoHD" />
@@ -61,6 +55,7 @@
     <Property Name="TraTruoc" Type="Double" Nullable="false" />
     <NavigationProperty Name="ChiTietHopDong" Relationship="Self.FK_CTHopDong_HopDong" FromRole="HopDong" ToRole="ChiTietHopDong" />
     <NavigationProperty Name="KHACH" Relationship="Self.FK_HopDong_Khach" FromRole="HopDong" ToRole="KHACH" />
+    <NavigationProperty Name="ThanhToans" Relationship="Self.FK_ThanhToan_HopDong" FromRole="HopDong" ToRole="ThanhToan" />
   </EntityType>
   <EntityType Name="KHACH">
     <Key>
@@ -74,6 +69,7 @@
     <Property Name="SDT" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="NganHang" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="SoTK" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Khach_Account_ID" FromRole="KHACH" ToRole="Account" />
     <NavigationProperty Name="DatXes" Relationship="Self.FK_DatXe_Khach" FromRole="KHACH" ToRole="DatXe" />
     <NavigationProperty Name="HopDongs" Relationship="Self.FK_HopDong_Khach" FromRole="KHACH" ToRole="HopDong" />
   </EntityType>
@@ -83,6 +79,7 @@
     </Key>
     <Property Name="MaLoaiNV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenLoaiNV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="NhanViens" Relationship="Self.FK_NV_LoaiNV" FromRole="LoaiNhanVien" ToRole="NhanVien" />
   </EntityType>
   <EntityType Name="LoaiXe">
     <Key>
@@ -94,7 +91,6 @@
     <Property Name="SoLuong" Type="Int32" />
     <NavigationProperty Name="ChiTietHopDongs" Relationship="Self.FK_CTHopDong_LoaiXe" FromRole="LoaiXe" ToRole="ChiTietHopDong" />
     <NavigationProperty Name="DatXes" Relationship="Self.FK_DatXe_LoaiXe" FromRole="LoaiXe" ToRole="DatXe" />
-    <NavigationProperty Name="Gias" Relationship="Self.FK_Gia_LoaiXe" FromRole="LoaiXe" ToRole="Gia" />
     <NavigationProperty Name="Xes" Relationship="Self.FK_Xe_LoaiXe" FromRole="LoaiXe" ToRole="Xe" />
   </EntityType>
   <EntityType Name="NhanVien">
@@ -103,7 +99,13 @@
     </Key>
     <Property Name="MaNV" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MaLoaiNV" Type="Int32" Nullable="false" />
-    <Property Name="TenNV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenNV" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CMND" Type="Int32" />
+    <Property Name="SDT" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_NV_Account_ID" FromRole="NhanVien" ToRole="Account" />
+    <NavigationProperty Name="LoaiNhanVien" Relationship="Self.FK_NV_LoaiNV" FromRole="NhanVien" ToRole="LoaiNhanVien" />
     <NavigationProperty Name="ThanhToans" Relationship="Self.FK_ThanhToan_NhanVien" FromRole="NhanVien" ToRole="ThanhToan" />
   </EntityType>
   <EntityType Name="PhanQuyen">
@@ -123,6 +125,7 @@
     <Property Name="PhiPS" Type="Double" />
     <Property Name="LyDo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MaNV" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="HopDong" Relationship="Self.FK_ThanhToan_HopDong" FromRole="ThanhToan" ToRole="HopDong" />
     <NavigationProperty Name="NhanVien" Relationship="Self.FK_ThanhToan_NhanVien" FromRole="ThanhToan" ToRole="NhanVien" />
   </EntityType>
   <EntityType Name="Xe">
@@ -134,6 +137,7 @@
     <Property Name="BienSo" Type="Int32" />
     <Property Name="TenXe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GiaLoaiXe" Type="Single" />
     <Property Name="TinhTrang" Type="Boolean" />
     <NavigationProperty Name="LoaiXe" Relationship="Self.FK_Xe_LoaiXe" FromRole="Xe" ToRole="LoaiXe" />
     <NavigationProperty Name="XeRas" Relationship="Self.FK_XeRa_Xe" FromRole="Xe" ToRole="XeRa" />
@@ -168,6 +172,30 @@
       </Principal>
       <Dependent Role="Account">
         <PropertyRef Name="MaQuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Khach_Account_ID">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="KHACH" Type="Self.KHACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="IdA" />
+      </Principal>
+      <Dependent Role="KHACH">
+        <PropertyRef Name="SDT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NV_Account_ID">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="IdA" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="SDT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -219,18 +247,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Gia_LoaiXe">
-    <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="1" />
-    <End Role="Gia" Type="Self.Gia" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="LoaiXe">
-        <PropertyRef Name="MaLoaiXe" />
-      </Principal>
-      <Dependent Role="Gia">
-        <PropertyRef Name="MaLoaiXe" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_HopDong_Khach">
     <End Role="KHACH" Type="Self.KHACH" Multiplicity="1" />
     <End Role="HopDong" Type="Self.HopDong" Multiplicity="*" />
@@ -240,6 +256,30 @@
       </Principal>
       <Dependent Role="HopDong">
         <PropertyRef Name="MaKhach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ThanhToan_HopDong">
+    <End Role="HopDong" Type="Self.HopDong" Multiplicity="1" />
+    <End Role="ThanhToan" Type="Self.ThanhToan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HopDong">
+        <PropertyRef Name="SoHD" />
+      </Principal>
+      <Dependent Role="ThanhToan">
+        <PropertyRef Name="SoHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NV_LoaiNV">
+    <End Role="LoaiNhanVien" Type="Self.LoaiNhanVien" Multiplicity="1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiNhanVien">
+        <PropertyRef Name="MaLoaiNV" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="MaLoaiNV" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -295,7 +335,6 @@
     <EntitySet Name="Accounts" EntityType="Self.Account" />
     <EntitySet Name="ChiTietHopDongs" EntityType="Self.ChiTietHopDong" />
     <EntitySet Name="DatXes" EntityType="Self.DatXe" />
-    <EntitySet Name="Gias" EntityType="Self.Gia" />
     <EntitySet Name="HopDongs" EntityType="Self.HopDong" />
     <EntitySet Name="KHACHes" EntityType="Self.KHACH" />
     <EntitySet Name="LoaiNhanViens" EntityType="Self.LoaiNhanVien" />
@@ -309,6 +348,14 @@
     <AssociationSet Name="FK_Account_PhanQuyen" Association="Self.FK_Account_PhanQuyen">
       <End Role="PhanQuyen" EntitySet="PhanQuyens" />
       <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Khach_Account_ID" Association="Self.FK_Khach_Account_ID">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="KHACH" EntitySet="KHACHes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NV_Account_ID" Association="Self.FK_NV_Account_ID">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="NhanVien" EntitySet="NhanViens" />
     </AssociationSet>
     <AssociationSet Name="FK_CTHopDong_HopDong" Association="Self.FK_CTHopDong_HopDong">
       <End Role="HopDong" EntitySet="HopDongs" />
@@ -326,13 +373,17 @@
       <End Role="LoaiXe" EntitySet="LoaiXes" />
       <End Role="DatXe" EntitySet="DatXes" />
     </AssociationSet>
-    <AssociationSet Name="FK_Gia_LoaiXe" Association="Self.FK_Gia_LoaiXe">
-      <End Role="LoaiXe" EntitySet="LoaiXes" />
-      <End Role="Gia" EntitySet="Gias" />
-    </AssociationSet>
     <AssociationSet Name="FK_HopDong_Khach" Association="Self.FK_HopDong_Khach">
       <End Role="KHACH" EntitySet="KHACHes" />
       <End Role="HopDong" EntitySet="HopDongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ThanhToan_HopDong" Association="Self.FK_ThanhToan_HopDong">
+      <End Role="HopDong" EntitySet="HopDongs" />
+      <End Role="ThanhToan" EntitySet="ThanhToans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NV_LoaiNV" Association="Self.FK_NV_LoaiNV">
+      <End Role="LoaiNhanVien" EntitySet="LoaiNhanViens" />
+      <End Role="NhanVien" EntitySet="NhanViens" />
     </AssociationSet>
     <AssociationSet Name="FK_Xe_LoaiXe" Association="Self.FK_Xe_LoaiXe">
       <End Role="LoaiXe" EntitySet="LoaiXes" />

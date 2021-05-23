@@ -4,9 +4,10 @@
     <Key>
       <PropertyRef Name="IdA" />
     </Key>
-    <Property Name="IdA" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="IdA" Type="char" MaxLength="20" Nullable="false" />
     <Property Name="PassA" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="MaQuyen" Type="int" Nullable="false" />
+    <Property Name="TenUser" Type="nvarchar" MaxLength="40" Nullable="false" />
   </EntityType>
   <EntityType Name="ChiTietHopDong">
     <Key>
@@ -32,14 +33,6 @@
     <Property Name="SoLuong" Type="int" />
     <Property Name="NgayHenLay" Type="date" Nullable="false" />
     <Property Name="TinhTrang" Type="bit" />
-  </EntityType>
-  <EntityType Name="Gia">
-    <Key>
-      <PropertyRef Name="MaGia" />
-    </Key>
-    <Property Name="MaGia" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="MaLoaiXe" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="GiaXe" Type="real" />
   </EntityType>
   <EntityType Name="HopDong">
     <Key>
@@ -89,7 +82,11 @@
     </Key>
     <Property Name="MaNV" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="MaLoaiNV" Type="int" Nullable="false" />
-    <Property Name="TenNV" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TenNV" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
+    <Property Name="Mail" Type="varchar(max)" />
+    <Property Name="CMND" Type="int" />
+    <Property Name="SDT" Type="char" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="PhanQuyen">
     <Key>
@@ -117,6 +114,7 @@
     <Property Name="BienSo" Type="int" />
     <Property Name="TenXe" Type="nvarchar(max)" />
     <Property Name="MoTa" Type="nvarchar(max)" />
+    <Property Name="GiaLoaiXe" Type="real" />
     <Property Name="TinhTrang" Type="bit" />
   </EntityType>
   <!--Errors Found During Generation:
@@ -201,18 +199,6 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Gia_LoaiXe">
-    <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="1" />
-    <End Role="Gia" Type="Self.Gia" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="LoaiXe">
-        <PropertyRef Name="MaLoaiXe" />
-      </Principal>
-      <Dependent Role="Gia">
-        <PropertyRef Name="MaLoaiXe" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_HopDong_Khach">
     <End Role="KHACH" Type="Self.KHACH" Multiplicity="1" />
     <End Role="HopDong" Type="Self.HopDong" Multiplicity="*" />
@@ -222,6 +208,54 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
       </Principal>
       <Dependent Role="HopDong">
         <PropertyRef Name="MaKhach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Khach_Account_ID">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="KHACH" Type="Self.KHACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="IdA" />
+      </Principal>
+      <Dependent Role="KHACH">
+        <PropertyRef Name="SDT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NV_Account_ID">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="IdA" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="SDT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NV_LoaiNV">
+    <End Role="LoaiNhanVien" Type="Self.LoaiNhanVien" Multiplicity="1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiNhanVien">
+        <PropertyRef Name="MaLoaiNV" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="MaLoaiNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ThanhToan_HopDong">
+    <End Role="HopDong" Type="Self.HopDong" Multiplicity="1" />
+    <End Role="ThanhToan" Type="Self.ThanhToan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HopDong">
+        <PropertyRef Name="SoHD" />
+      </Principal>
+      <Dependent Role="ThanhToan">
+        <PropertyRef Name="SoHD" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -277,7 +311,6 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietHopDong" EntityType="Self.ChiTietHopDong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DatXe" EntityType="Self.DatXe" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Gia" EntityType="Self.Gia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HopDong" EntityType="Self.HopDong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KHACH" EntityType="Self.KHACH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoaiNhanVien" EntityType="Self.LoaiNhanVien" Schema="dbo" store:Type="Tables" />
@@ -320,13 +353,25 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
       <End Role="LoaiXe" EntitySet="LoaiXe" />
       <End Role="DatXe" EntitySet="DatXe" />
     </AssociationSet>
-    <AssociationSet Name="FK_Gia_LoaiXe" Association="Self.FK_Gia_LoaiXe">
-      <End Role="LoaiXe" EntitySet="LoaiXe" />
-      <End Role="Gia" EntitySet="Gia" />
-    </AssociationSet>
     <AssociationSet Name="FK_HopDong_Khach" Association="Self.FK_HopDong_Khach">
       <End Role="KHACH" EntitySet="KHACH" />
       <End Role="HopDong" EntitySet="HopDong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Khach_Account_ID" Association="Self.FK_Khach_Account_ID">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="KHACH" EntitySet="KHACH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NV_Account_ID" Association="Self.FK_NV_Account_ID">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="NhanVien" EntitySet="NhanVien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NV_LoaiNV" Association="Self.FK_NV_LoaiNV">
+      <End Role="LoaiNhanVien" EntitySet="LoaiNhanVien" />
+      <End Role="NhanVien" EntitySet="NhanVien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ThanhToan_HopDong" Association="Self.FK_ThanhToan_HopDong">
+      <End Role="HopDong" EntitySet="HopDong" />
+      <End Role="ThanhToan" EntitySet="ThanhToan" />
     </AssociationSet>
     <AssociationSet Name="FK_ThanhToan_NhanVien" Association="Self.FK_ThanhToan_NhanVien">
       <End Role="NhanVien" EntitySet="NhanVien" />
