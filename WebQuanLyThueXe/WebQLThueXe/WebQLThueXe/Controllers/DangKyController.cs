@@ -17,39 +17,22 @@ namespace WebQLThueXe.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(KhachHang kh)
+        public ActionResult Index(Account _acc)
         {
             if (ModelState.IsValid)
             {
-                var check_sdt = db.Accounts.Where(s => s.IdA == kh.Sdt).FirstOrDefault();
-                if (check_sdt == null)
+                var check_ID = db.Accounts.Where(s => s.IdA == _acc.IdA).FirstOrDefault();
+                if (check_ID == null)
                 {
                     db.Configuration.ValidateOnSaveEnabled = false;
-
-                    //thong tin bang KHACH
-                    var kh1 = new KHACH();
-                    kh1.MaKhach = kh.maKH;
-                    kh1.TenKhach = kh.TenKhach;
-                    kh1.CMND = kh.Cmnd;
-                    kh1.Mail = kh.Mail;
-                    kh1.SDT = kh.Sdt;
-                    db.KHACHes.Add(kh1);
-
-                    //thong tin bang Account
-                    Account acc1 = new Account();
-                    acc1.IdA = kh.Sdt;
-                    acc1.PassA = kh.Password;
-                    acc1.MaQuyen = 3;
-                    db.Accounts.Add(acc1);
-
+                    _acc.MaQuyen = 2;
+                    db.Accounts.Add(_acc);
                     db.SaveChanges();
-                    
-                    return RedirectToAction("Index", "DangNhap");
+                    return RedirectToAction("Index","TrangChu");
                 }
-
                 else
                 {
-                    ViewBag.Error = "User đã tồn tại";
+                    ViewBag.ErrorDangKy = "ID này đã tồn tại";
                     return View();
                 }
             }
