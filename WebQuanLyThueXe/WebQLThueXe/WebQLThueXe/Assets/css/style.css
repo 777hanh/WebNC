@@ -809,5 +809,14 @@ span.sin-color {
 .header-social a.face {
     margin-right: 4%;
 }
+
+.sg-error-message,
+.sg-question-errorlist,
+.text-danger{
+    background: #FFC199; /*Change background color*/
+    border-left: 9px solid #FF6600; /*Change left border color*/
+    color: #2c3e50; /*Change text color*/
+}
+
 }
 /*--meadia quries end here--*/

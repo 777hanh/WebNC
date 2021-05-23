@@ -25,7 +25,8 @@ namespace WebQLThueXe.Models
         }
 
         [DisplayName("Nhập Tên đăng nhập")]
-        [Required(ErrorMessage = "Không để trống")]
+        [Required(ErrorMessage = "Not a valid phone number")]  
+        [RegularExpression(@"[0-9]{10}", ErrorMessage = "Not a valid phone number")]
         public string IdA { get; set; }
 
         [DisplayName("Nhập mật khẩu")]
@@ -41,6 +42,7 @@ namespace WebQLThueXe.Models
         [NotMapped]
         [Compare("PassA")]
         [DisplayName("Nhập lại mật khẩu")]
+        [Required(ErrorMessage = "Mật khẩu không trùng")]
         public string ConfirmPassA { get; set; }
 
         public string Error { get; set; }
