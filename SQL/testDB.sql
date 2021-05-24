@@ -153,3 +153,15 @@ CREATE TABLE [dbo].[ThanhToan](
 	CONSTRAINT [FK_ThanhToan_HopDong] FOREIGN KEY ([SoHD]) REFERENCES [dbo].[HopDong] ([SoHD]),
 	CONSTRAINT [FK_ThanhToan_NhanVien] FOREIGN KEY ([MaNV]) REFERENCES [dbo].[NhanVien] ([MaNV]),
 );
+
+--Bang Yeu Cau xe khong co trong db
+CREATE TABLE [dbo].[YeuCau](
+	[MaYC]			int					IDENTITY (1,1) NOT NULL,
+	[MaKhach]		int					NOT NULL,
+	[TenLoaiXe]		nvarchar(MAX)		NULL,
+	[SoCho]			INT					NULL,
+    [SoLuong]		INT					NULL,
+	[GhiChu]		nvarchar(MAX)		NULL,
+	PRIMARY KEY CLUSTERED ([MaYC] ASC),
+	CONSTRAINT [FK_YeuCau_KHACH] FOREIGN KEY ([MaKhach]) REFERENCES [dbo].[KHACH] ([MaKhach]),
+);
