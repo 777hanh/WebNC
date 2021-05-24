@@ -42,6 +42,7 @@ namespace WebQLThueXe.Models
         [NotMapped]
         [Compare("PassA")]
         [DisplayName("Nhập lại mật khẩu")]
+        [DataType(DataType.Password)]
         [Required(ErrorMessage = "Mật khẩu không trùng")]
         public string ConfirmPassA { get; set; }
 

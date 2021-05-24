@@ -298,6 +298,7 @@
     <Content Include="Assets\images\view_4.jpg" />
     <Content Include="Assets\images\view_5.jpg" />
     <Content Include="Assets\images\view_6.jpg" />
+    <Content Include="Assets\js\a.js" />
     <Content Include="Assets\js\blog_custom.js" />
     <Content Include="Assets\js\blog_single_custom.js" />
     <Content Include="Assets\js\cart_custom.js" />

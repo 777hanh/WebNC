@@ -20,6 +20,7 @@
     <!-- //for-mobile-apps -->
     <!--Google Fonts-->
     <link href='../../Assets//fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+    <link href="~/Assets/js/a.js" />
     <!--JS-->
     @*<script src="~/Scripts/js_signup.js"></script>*@
     <script>
@@ -47,27 +48,32 @@
                             @using (Html.BeginForm())
                             {
                                 @Html.AntiForgeryToken()
-                                <form name="SignUpForm" @*onsubmit="return validateForm()" action="Index" method="post"*@>
-                                    <div>
-                                        @Html.ValidationMessageFor(model => model.TenUser, "", new { @class = "text-danger" })
-                                        @Html.EditorFor(model => model.TenUser, new { htmlAttributes = new { @class = "text", @placeholder = "Nhập họ và tên" } })
-                                    </div>
-                                    <div>
-                                        @Html.ValidationMessageFor(model => model.IdA, "", new { @class = "text-danger" })
-                                        @Html.EditorFor(model => model.IdA, new { htmlAttributes = new { @class = "text", @placeholder = "Tên đăng nhập" } })
-                                    </div>
-                                    <div>
-                                        @Html.ValidationMessageFor(model => model.PassA, "", new { @class = "text-danger" })
-                                        @Html.EditorFor(model => model.PassA, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mật khẩu" } })
-                                    </div>
-                                    <div>
-                                        @Html.ValidationMessageFor(model => model.ConfirmPassA, "", new { @class = "text-danger" })
-                                        @Html.EditorFor(model => model.ConfirmPassA, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập lại mật khẩu" } })
-                                    </div>
-                        @*<a href="/DangNhap">*@<input type="submit" style="   background-color: #04AA6D" value="Đăng ký">@*</a>*@
+                            <form name="SignUpForm" @*onsubmit="return validateForm()" action="Index" method="post"*@>
+                                @if (ViewBag.Message != null)
+                                {
+                                    <h2 class="error">@ViewBag.ErrorDangKy</h2>
+                                }
+                                <div>
+                                    @Html.ValidationMessageFor(model => model.TenUser, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.TenUser, new { htmlAttributes = new { @class = "text", @placeholder = "Nhập họ và tên" } })
+                                </div>
+                                <div>
+                                    @Html.ValidationMessageFor(model => model.IdA, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.IdA, new { htmlAttributes = new { @class = "text", @placeholder = "Tên đăng nhập" } })
+                                </div>
+                                <div>
+                                    @Html.ValidationMessageFor(model => model.PassA, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.PassA, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mật khẩu" } })
+                                </div>
+                                <div>
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassA, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.ConfirmPassA, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập lại mật khẩu" } })
+                                </div>
+
+                                @*<a href="/DangNhap">*@<input type="submit" style="   background-color: #04AA6D" value="Đăng ký">@*</a>*@
 
 
-                        </form>
+                            </form>
                     }
                             <br />
                             <a href="/DangNhap"><input type="submit" style="margin-top:5%; backdrop-filter:none; background-color:none" value="Đăng nhập"></a>

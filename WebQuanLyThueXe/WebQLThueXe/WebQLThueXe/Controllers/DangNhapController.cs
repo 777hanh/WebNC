@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebQLThueXe.Models;
+using System.Threading;
 
 namespace WebQLThueXe.Controllers
 {
@@ -35,6 +36,7 @@ namespace WebQLThueXe.Controllers
                     Session["IdA"] = _acc.IdA;
                     Session["PassA"] = _acc.PassA;
                     Session["MaQuyen"] = _acc.MaQuyen;
+                    Thread.Sleep(3000);
                     return RedirectToAction("Index", "TrangChu");
                 }
             }
