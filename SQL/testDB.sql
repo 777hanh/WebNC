@@ -21,6 +21,7 @@ CREATE TABLE [dbo].[Xe](
 	[MoTa]			nvarchar(MAX)		NULL,
 	[GiaLoaiXe]			float(8)		NULL,
 	[TinhTrang]		bit					NULL,
+	[HinhAnh]		nvarchar(MAX)		NULL,
 	PRIMARY KEY CLUSTERED ([MaXe] ASC),
 	CONSTRAINT [FK_Xe_LoaiXe] FOREIGN KEY ([MaLoaiXe]) REFERENCES [dbo].[LoaiXe] ([MaLoaiXe])
 );
