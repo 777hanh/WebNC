@@ -36,6 +36,7 @@ namespace WebQLThueXe.Models
         public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
         public virtual DbSet<ThanhToan> ThanhToans { get; set; }
         public virtual DbSet<Xe> Xes { get; set; }
+        public virtual DbSet<YeuCau> YeuCaus { get; set; }
         public virtual DbSet<XeRa> XeRas { get; set; }
         public virtual DbSet<XeVao> XeVaos { get; set; }
     }

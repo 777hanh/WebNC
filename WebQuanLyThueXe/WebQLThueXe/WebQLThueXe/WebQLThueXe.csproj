@@ -190,6 +190,9 @@
     <Compile Include="Models\XeVao.cs">
       <DependentUpon>TTGoDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\YeuCau.cs">
+      <DependentUpon>TTGoDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

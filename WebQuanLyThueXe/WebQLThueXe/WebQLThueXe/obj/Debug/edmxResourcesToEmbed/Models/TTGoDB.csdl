@@ -9,8 +9,6 @@
     <Property Name="MaQuyen" Type="Int32" Nullable="false" />
     <Property Name="TenUser" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="PhanQuyen" Relationship="Self.FK_Account_PhanQuyen" FromRole="Account" ToRole="PhanQuyen" />
-    <NavigationProperty Name="KHACHes" Relationship="Self.FK_Khach_Account_ID" FromRole="Account" ToRole="KHACH" />
-    <NavigationProperty Name="NhanViens" Relationship="Self.FK_NV_Account_ID" FromRole="Account" ToRole="NhanVien" />
   </EntityType>
   <EntityType Name="ChiTietHopDong">
     <Key>
@@ -69,9 +67,9 @@
     <Property Name="SDT" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="NganHang" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="SoTK" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
-    <NavigationProperty Name="Account" Relationship="Self.FK_Khach_Account_ID" FromRole="KHACH" ToRole="Account" />
     <NavigationProperty Name="DatXes" Relationship="Self.FK_DatXe_Khach" FromRole="KHACH" ToRole="DatXe" />
     <NavigationProperty Name="HopDongs" Relationship="Self.FK_HopDong_Khach" FromRole="KHACH" ToRole="HopDong" />
+    <NavigationProperty Name="YeuCaus" Relationship="Self.FK_YeuCau_KHACH" FromRole="KHACH" ToRole="YeuCau" />
   </EntityType>
   <EntityType Name="LoaiNhanVien">
     <Key>
@@ -104,7 +102,6 @@
     <Property Name="Mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="CMND" Type="Int32" />
     <Property Name="SDT" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Account" Relationship="Self.FK_NV_Account_ID" FromRole="NhanVien" ToRole="Account" />
     <NavigationProperty Name="LoaiNhanVien" Relationship="Self.FK_NV_LoaiNV" FromRole="NhanVien" ToRole="LoaiNhanVien" />
     <NavigationProperty Name="ThanhToans" Relationship="Self.FK_ThanhToan_NhanVien" FromRole="NhanVien" ToRole="ThanhToan" />
   </EntityType>
@@ -139,9 +136,22 @@
     <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="GiaLoaiXe" Type="Single" />
     <Property Name="TinhTrang" Type="Boolean" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="LoaiXe" Relationship="Self.FK_Xe_LoaiXe" FromRole="Xe" ToRole="LoaiXe" />
     <NavigationProperty Name="XeRas" Relationship="Self.FK_XeRa_Xe" FromRole="Xe" ToRole="XeRa" />
     <NavigationProperty Name="XeVaos" Relationship="Self.FK_XeVao_Xe" FromRole="Xe" ToRole="XeVao" />
+  </EntityType>
+  <EntityType Name="YeuCau">
+    <Key>
+      <PropertyRef Name="MaYC" />
+    </Key>
+    <Property Name="MaYC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaKhach" Type="Int32" Nullable="false" />
+    <Property Name="TenLoaiXe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SoCho" Type="Int32" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KHACH" Relationship="Self.FK_YeuCau_KHACH" FromRole="YeuCau" ToRole="KHACH" />
   </EntityType>
   <EntityType Name="XeRa">
     <Key>
@@ -172,30 +182,6 @@
       </Principal>
       <Dependent Role="Account">
         <PropertyRef Name="MaQuyen" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Khach_Account_ID">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="KHACH" Type="Self.KHACH" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="IdA" />
-      </Principal>
-      <Dependent Role="KHACH">
-        <PropertyRef Name="SDT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_NV_Account_ID">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="IdA" />
-      </Principal>
-      <Dependent Role="NhanVien">
-        <PropertyRef Name="SDT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -271,6 +257,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_YeuCau_KHACH">
+    <End Role="KHACH" Type="Self.KHACH" Multiplicity="1" />
+    <End Role="YeuCau" Type="Self.YeuCau" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACH">
+        <PropertyRef Name="MaKhach" />
+      </Principal>
+      <Dependent Role="YeuCau">
+        <PropertyRef Name="MaKhach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_NV_LoaiNV">
     <End Role="LoaiNhanVien" Type="Self.LoaiNhanVien" Multiplicity="1" />
     <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
@@ -343,19 +341,12 @@
     <EntitySet Name="PhanQuyens" EntityType="Self.PhanQuyen" />
     <EntitySet Name="ThanhToans" EntityType="Self.ThanhToan" />
     <EntitySet Name="Xes" EntityType="Self.Xe" />
+    <EntitySet Name="YeuCaus" EntityType="Self.YeuCau" />
     <EntitySet Name="XeRas" EntityType="Self.XeRa" />
     <EntitySet Name="XeVaos" EntityType="Self.XeVao" />
     <AssociationSet Name="FK_Account_PhanQuyen" Association="Self.FK_Account_PhanQuyen">
       <End Role="PhanQuyen" EntitySet="PhanQuyens" />
       <End Role="Account" EntitySet="Accounts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Khach_Account_ID" Association="Self.FK_Khach_Account_ID">
-      <End Role="Account" EntitySet="Accounts" />
-      <End Role="KHACH" EntitySet="KHACHes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_NV_Account_ID" Association="Self.FK_NV_Account_ID">
-      <End Role="Account" EntitySet="Accounts" />
-      <End Role="NhanVien" EntitySet="NhanViens" />
     </AssociationSet>
     <AssociationSet Name="FK_CTHopDong_HopDong" Association="Self.FK_CTHopDong_HopDong">
       <End Role="HopDong" EntitySet="HopDongs" />
@@ -380,6 +371,10 @@
     <AssociationSet Name="FK_ThanhToan_HopDong" Association="Self.FK_ThanhToan_HopDong">
       <End Role="HopDong" EntitySet="HopDongs" />
       <End Role="ThanhToan" EntitySet="ThanhToans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YeuCau_KHACH" Association="Self.FK_YeuCau_KHACH">
+      <End Role="KHACH" EntitySet="KHACHes" />
+      <End Role="YeuCau" EntitySet="YeuCaus" />
     </AssociationSet>
     <AssociationSet Name="FK_NV_LoaiNV" Association="Self.FK_NV_LoaiNV">
       <End Role="LoaiNhanVien" EntitySet="LoaiNhanViens" />

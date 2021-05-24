@@ -28,6 +28,7 @@ namespace WebQLThueXe.Models
         public string MoTa { get; set; }
         public Nullable<float> GiaLoaiXe { get; set; }
         public Nullable<bool> TinhTrang { get; set; }
+        public string HinhAnh { get; set; }
     
         public virtual LoaiXe LoaiXe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

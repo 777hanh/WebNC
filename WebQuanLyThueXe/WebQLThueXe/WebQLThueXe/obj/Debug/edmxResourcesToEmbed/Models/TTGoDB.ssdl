@@ -116,6 +116,7 @@
     <Property Name="MoTa" Type="nvarchar(max)" />
     <Property Name="GiaLoaiXe" Type="real" />
     <Property Name="TinhTrang" Type="bit" />
+    <Property Name="HinhAnh" Type="nvarchar(max)" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'testDB.dbo.XeRa' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -137,6 +138,17 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
     </Key>
     <Property Name="NgayVao" Type="date" Nullable="false" />
     <Property Name="MaXe" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="YeuCau">
+    <Key>
+      <PropertyRef Name="MaYC" />
+    </Key>
+    <Property Name="MaYC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaKhach" Type="int" Nullable="false" />
+    <Property Name="TenLoaiXe" Type="nvarchar(max)" />
+    <Property Name="SoCho" Type="int" />
+    <Property Name="SoLuong" Type="int" />
     <Property Name="GhiChu" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="FK_Account_PhanQuyen">
@@ -208,30 +220,6 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
       </Principal>
       <Dependent Role="HopDong">
         <PropertyRef Name="MaKhach" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Khach_Account_ID">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="KHACH" Type="Self.KHACH" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="IdA" />
-      </Principal>
-      <Dependent Role="KHACH">
-        <PropertyRef Name="SDT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_NV_Account_ID">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="IdA" />
-      </Principal>
-      <Dependent Role="NhanVien">
-        <PropertyRef Name="SDT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -307,6 +295,18 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_YeuCau_KHACH">
+    <End Role="KHACH" Type="Self.KHACH" Multiplicity="1" />
+    <End Role="YeuCau" Type="Self.YeuCau" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACH">
+        <PropertyRef Name="MaKhach" />
+      </Principal>
+      <Dependent Role="YeuCau">
+        <PropertyRef Name="MaKhach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="testDBModelStoreContainer">
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietHopDong" EntityType="Self.ChiTietHopDong" Schema="dbo" store:Type="Tables" />
@@ -319,6 +319,7 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
     <EntitySet Name="PhanQuyen" EntityType="Self.PhanQuyen" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThanhToan" EntityType="Self.ThanhToan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Xe" EntityType="Self.Xe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YeuCau" EntityType="Self.YeuCau" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="XeRa" EntityType="Self.XeRa" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [XeRa].[NgayRa] AS [NgayRa], 
@@ -357,14 +358,6 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
       <End Role="KHACH" EntitySet="KHACH" />
       <End Role="HopDong" EntitySet="HopDong" />
     </AssociationSet>
-    <AssociationSet Name="FK_Khach_Account_ID" Association="Self.FK_Khach_Account_ID">
-      <End Role="Account" EntitySet="Account" />
-      <End Role="KHACH" EntitySet="KHACH" />
-    </AssociationSet>
-    <AssociationSet Name="FK_NV_Account_ID" Association="Self.FK_NV_Account_ID">
-      <End Role="Account" EntitySet="Account" />
-      <End Role="NhanVien" EntitySet="NhanVien" />
-    </AssociationSet>
     <AssociationSet Name="FK_NV_LoaiNV" Association="Self.FK_NV_LoaiNV">
       <End Role="LoaiNhanVien" EntitySet="LoaiNhanVien" />
       <End Role="NhanVien" EntitySet="NhanVien" />
@@ -388,6 +381,10 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
     <AssociationSet Name="FK_XeVao_Xe" Association="Self.FK_XeVao_Xe">
       <End Role="Xe" EntitySet="Xe" />
       <End Role="XeVao" EntitySet="XeVao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YeuCau_KHACH" Association="Self.FK_YeuCau_KHACH">
+      <End Role="KHACH" EntitySet="KHACH" />
+      <End Role="YeuCau" EntitySet="YeuCau" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

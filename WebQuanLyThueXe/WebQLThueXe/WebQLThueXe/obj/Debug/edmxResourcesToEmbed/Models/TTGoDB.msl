@@ -126,6 +126,19 @@
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />
           <ScalarProperty Name="GiaLoaiXe" ColumnName="GiaLoaiXe" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YeuCaus">
+      <EntityTypeMapping TypeName="testDBModel.YeuCau">
+        <MappingFragment StoreEntitySet="YeuCau">
+          <ScalarProperty Name="MaYC" ColumnName="MaYC" />
+          <ScalarProperty Name="MaKhach" ColumnName="MaKhach" />
+          <ScalarProperty Name="TenLoaiXe" ColumnName="TenLoaiXe" />
+          <ScalarProperty Name="SoCho" ColumnName="SoCho" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
