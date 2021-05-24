@@ -245,3 +245,4 @@ E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\obj\Debug\WebQLThueXe.c
 E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\obj\Debug\WebQLThueXe.csproj.CopyComplete
 E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\obj\Debug\WebQLThueXe.dll
 E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\obj\Debug\WebQLThueXe.pdb
+E:\test\webNCGit\WebQuanLyThueXe\WebQLThueXe\WebQLThueXe\obj\Debug\WebQLThueXe.csprojAssemblyReference.cache

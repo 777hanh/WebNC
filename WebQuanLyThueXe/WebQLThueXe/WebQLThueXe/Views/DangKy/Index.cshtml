@@ -62,7 +62,7 @@
                                     </div>
                                     <div>
                                         @Html.ValidationMessageFor(model => model.ConfirmPassA, "", new { @class = "text-danger" })
-                                        @Html.EditorFor(model => model.PassA, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập lại mật khẩu" } })
+                                        @Html.EditorFor(model => model.ConfirmPassA, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập lại mật khẩu" } })
                                     </div>
                         @*<a href="/DangNhap">*@<input type="submit" style="   background-color: #04AA6D" value="Đăng ký">@*</a>*@
 
@@ -76,7 +76,7 @@
 
                 </div>
             </div>
-        </div>
+       
     </header>
     <!--header end here-->
     <footer>
@@ -92,6 +92,7 @@
 
 <style>
 .text-danger {
+    font-size:small;
         color:red
     }
 </style>

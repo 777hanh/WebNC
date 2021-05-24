@@ -31,24 +31,26 @@
                                 @using (Html.BeginForm("DangNhapAccount", "DangNhap"))
                                 {
                                     @Html.AntiForgeryToken()
-                                    <form action="DangNhapAccount" method="post">
-                                        <input type="text" value="Số điện thoại" name="IdA" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Name';}" />
-                                        <input type="password" value="Mật khẩu" name="PassA" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}" />
-                                        <div class="remember">
-                                            <span class="checkbox1">
-                                                <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Nhớ tôi</label>
-                                            </span>
-                                            <div class="forgot">
-                                                <h6><a href="#">Quên mật khẩu?</a></h6>
-                                            </div>
-                                            <div class="clear"> </div>
+                                <form action="DangNhapAccount" method="post">
+                                    @Html.ValidationMessageFor(model => model.IdA, "", new { @class = "text-danger" })
+                                    <input type="text" placeholder="Số điện thoại" name="IdA" />
+                                    @Html.ValidationMessageFor(model => model.PassA, "", new { @class = "text-danger" })
+                                    <input type="password" placeholder="Mật khẩu" name="PassA" />
+                                    <div class="remember">
+                                        <span class="checkbox1">
+                                            <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Nhớ tôi</label>
+                                        </span>
+                                        <div class="forgot">
+                                            <h6><a href="#">Quên mật khẩu?</a></h6>
                                         </div>
-                                        @if (ViewBag.Message != null)
-                                        {
-                                            <p class="error">@ViewBag.ErrorInfo</p>
-                                        }
-                                        <input type="submit" value="Đăng nhập">
-                                    </form>
+                                        <div class="clear"> </div>
+                                    </div>
+                                    @if (ViewBag.Message != null)
+                                    {
+                                        <p class="error">@ViewBag.ErrorInfo</p>
+                                    }
+                                    <input type="submit" value="Đăng nhập">
+                                </form>
                                     <div class="header-left-top">
                                         <br />
                                         <div style="color:white; font-size: 20px; text-align: center;">Bạn chưa có tài khoản?</div>
@@ -72,4 +74,10 @@
 
         </body>
 </html>
-    
+   
+    <style>
+        .text-danger {
+            font-size:small;
+            color: red
+        }
+    </style>
