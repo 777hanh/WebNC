@@ -1,0 +1,184 @@
+﻿@model WebQLThueXe.Models.YeuCau
+
+@{
+    Layout = null;
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @*<div class="form-horizontal">
+            <h4>YeuCau</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaKhach, "MaKhach", htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TenLoaiXe, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TenLoaiXe, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenLoaiXe, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SoCho, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SoCho, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SoCho, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SoLuong, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.GhiChu, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>*@
+
+
+
+
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+        <title>Đăng ký</title>
+        <script src="../../Assets/js/jquery.min.js"></script>
+        <!-- Custom Theme files -->
+        <link href="../../Assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <!-- for-mobile-apps -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="Classy Login form Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+        <!-- //for-mobile-apps -->
+        <!--Google Fonts-->
+        <link href='../../Assets//fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+        <link href="~/Assets/js/a.js" />
+        <!--JS-->
+        @*<script src="~/Scripts/js_signup.js"></script>*@
+        <script>
+            function validateForm() {
+                var x = document.SignUpForm.fsdt.value;
+                if (x == "") {
+                    alert("Sdt must be filled out");
+
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <!--header start here-->
+            <div class="header">
+                <div class="header-main">
+                    <h1>Tạo Yêu Cầu</h1>
+                    <div class="header-bottom">
+                        <div class="header-right w3agile">
+
+                            <di v class="header-left-bottom agileinfo">
+
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+                                <form name="SignUpForm" @*onsubmit="return validateForm()" action="Index" method="post"*@>
+                                    @if (ViewBag.Message != null)
+                                    {
+                                        <h2 class="error">@ViewBag.ErrorDangKy</h2>
+                                    }
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.MaKhach, "MaKhach", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.TenLoaiXe, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.TenLoaiXe, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.TenLoaiXe, "", new { @class = "" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.SoCho, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.SoCho, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.SoCho, "", new { @class = "" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.SoLuong, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.GhiChu, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Create" class="btn btn-default" />
+                                        </div>
+                                    </div>
+
+                                </form>
+                                }
+                                <br />
+                                <a href="/DangNhap"><input type="submit" style="margin-top:5%; backdrop-filter:none; background-color:none" value="Đăng nhập"></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </header>
+        <!--header end here-->
+        <footer>
+
+            <div class="copyright">
+                <p>©TTGo 2021. All rights reserved</p>
+            </div>
+            <!--footer end heere-->
+        </footer>
+    </body>
+</html>
+
+
+<style>
+    .text-danger {
+        font-size: small;
+        color: red
+    }
+</style>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

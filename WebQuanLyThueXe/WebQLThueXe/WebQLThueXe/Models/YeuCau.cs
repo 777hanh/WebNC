@@ -22,5 +22,18 @@ namespace WebQLThueXe.Models
         public string GhiChu { get; set; }
     
         public virtual KHACH KHACH { get; set; }
+
+
+        List<ListMKH> khaches = new List<ListMKH>();
+        public IEnumerable<ListMKH> Items
+        {
+            get { return khaches; }
+        } 
+    }
+
+    public partial class ListMKH
+    {
+        public KHACH _khach { get; set; }
+        public int _maKhach { get; set; }
     }
 }
