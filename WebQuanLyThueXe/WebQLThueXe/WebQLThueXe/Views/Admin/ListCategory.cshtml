@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebQLThueXe.Models.Xe>
+﻿
+@model IEnumerable<WebQLThueXe.Models.LoaiXe>
 <!doctype html>
 <html lang="en" dir="ltr">
 
@@ -213,7 +214,7 @@
             <nav id="left-sidebar-nav" class="sidebar-nav">
                 <ul class="metismenu">
                     <li class="g_heading">Project</li>
-                    <li><a href="./ListCateNV"><i class="fa fa-list-ol"></i><span>Danh sách Tài khoản</span></a></li>
+                    <li><a href="./Index"><i class="fa fa-list-ol"></i><span>Danh sách Tài khoản</span></a></li>
                     <li>
                         <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-user"></i><span>Nhân viên</span></a>
                         <ul>
@@ -244,7 +245,7 @@
                     <div class="page-header">
                         <div class="left">
                             <a href="javascript:void(0)" class="icon menu_toggle mr-3"><i class="fa  fa-align-left"></i></a>
-                            <h4>Danh Sách xe</h4>
+                            <h4>Danh Sách loại xe</h4>
                         </div>
                         <div class="right">
                             <div class="input-icon xs-hide mr-4">
@@ -276,37 +277,22 @@
                 <div class="">
                     <table class="table table-hover">
                         <thead>
-                            <tr>@Html.ActionLink("Create New Car", "CreateCar")</tr>
+                            <tr>@Html.ActionLink("Create New Category", "CreateCategory")</tr>
                         </thead>
                         <thead>
                             <tr>
                                 <th>
-                                    Mã xe
+                                    Mã Loại xe
                                 </th>
                                 <th>
-                                    Tên xe
-                                </th>
-                                <th>
-                                    Loại xe
-                                </th>
-                                <th>
-                                    Biển số
+                                    Tên Loại xe
                                 </th>
                                 <th>
                                     Số chỗ
                                 </th>
                                 <th>
-                                    Mô tả
-                                </th>
-                                <th>
-                                    Hình ảnh
-                                </th>
-                                <th>
-                                    Tình trạng
-                                </th>
-                                <th>
-                                    Giá thuê
-                                </th>
+                                    Số lượng
+                                </th>                                
                             </tr>
                         </thead>
                         <thead>
@@ -314,43 +300,16 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.MaXe)
+                                        @Html.DisplayFor(modelItem => item.MaLoaiXe)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.TenXe)
+                                        @Html.DisplayFor(modelItem => item.TenLoaiXe)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.LoaiXe.TenLoaiXe)
+                                        @Html.DisplayFor(modelItem => item.SoCho)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.BienSo)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.LoaiXe.SoCho)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.MoTa)
-                                    </td>
-                                    <td>
-                                        <img src="@Url.Content(item.HinhAnh)" style="width:100px;height:100px" />
-                                    </td>
-                                    <td>
-                                        @{
-                                            if (item.TinhTrang == true)
-                                            {<p>Đang thuê</p>;
-                                            }
-                                            else
-                                            {
-                                                <p>Chưa thuê</p>
-                                            }
-                                        }
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.GiaLoaiXe)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.MaXe }) /
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.MaXe })
+                                        @Html.DisplayFor(modelItem => item.SoLuong)
                                     </td>
                                 </tr>
                             }
@@ -389,4 +348,5 @@
 
 </body>
 </html>
+
 

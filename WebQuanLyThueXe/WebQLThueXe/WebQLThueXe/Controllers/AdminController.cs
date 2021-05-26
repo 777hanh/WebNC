@@ -27,7 +27,16 @@ namespace WebQLThueXe.Controllers
             var staff = db.NhanViens;
             return View(staff);
         }
-
+        public ActionResult ListCategory()
+        {
+            var cate = db.LoaiXes;
+            return View(cate);
+        }
+        public ActionResult ListCateNV()
+        {
+            var cateNV = db.LoaiNhanViens;
+            return View(cateNV);
+        }
 
 
     }
