@@ -17,6 +17,11 @@ namespace WebQLThueXe.Controllers
             var accs = db.Accounts;
             return View(accs);
         }
+        public ActionResult ListCar()
+        {
+            var car = db.Xes;
+            return View(car);
+        }
 
 
 

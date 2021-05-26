@@ -1,5 +1,4 @@
-﻿@model IEnumerable<WebQLThueXe.Models.Account>
-
+﻿@model IEnumerable<WebQLThueXe.Models.Xe>
 <!doctype html>
 <html lang="en" dir="ltr">
 
@@ -218,14 +217,14 @@
                     <li>
                         <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-user"></i><span>Nhân viên</span></a>
                         <ul>
-                            <li><a href=/Index"><span>Danh sách Tài khoản</span></a></li>
+                            <li><a href="/Index"><span>Danh sách Tài khoản</span></a></li>
                             <li><a href="#"><span>Danh sách Nhân viên</span></a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-car"></i><span>Xe</span></a>
                         <ul>
-                            <li><a href="/ListCar">Danh Sách Xe</a></li>
+                            <li><a href="ListCar">Danh Sách Xe</a></li>
                             <li><a href="#">Danh sách hãng xe</a></li>
                         </ul>
                     </li>
@@ -278,40 +277,67 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Tên Người dùng)
+                                    Mã xe
                                 </th>
                                 <th>
-                                    Tên Đăng nhập
+                                    Tên xe
                                 </th>
                                 <th>
-                                    Mật khẩu
+                                    Loại xe
                                 </th>
                                 <th>
-                                    Loại Tài khoản
+                                    Biển số
+                                </th>
+                                <th>
+                                    Số chỗ
+                                </th>
+                                <th>
+                                    Mô tả
+                                </th>
+                                <th>
+                                    Hình ảnh
+                                </th>
+                                <th>
+                                    Tình trạng
+                                </th>
+                                <th>
+                                    Giá thuê
                                 </th>
                             </tr>
                         </thead>
                         <thead>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TenUser)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.IdA)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.PassA)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.PhanQuyen.TenQuyen)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.IdA }) / 
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.IdA })
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaXe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenXe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LoaiXe.TenLoaiXe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BienSo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LoaiXe.SoCho)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MoTa)
+                                </td>
+                                <td>
+                                    <img src="@Url.Content(item.HinhAnh)" style="width:100px;height:100px" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GiaLoaiXe)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.MaXe }) /
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.MaXe })
+                                </td>
+                            </tr>
                             }
                         </thead>
 
@@ -344,7 +370,8 @@
         <script src="../assets/js/core.js"></script>
         <script src="../ưassets/js/page/project-index.js"></script>
         <script src="https://use.fontawesome.com/aebce4ca07.js"></script>
-        </div>
+    </div>
 
 </body>
 </html>
+

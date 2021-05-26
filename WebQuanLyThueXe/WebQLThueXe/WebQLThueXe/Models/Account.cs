@@ -27,7 +27,7 @@ namespace WebQLThueXe.Models
 
         [DisplayName("Nhập Tên đăng nhập")]
         [Required(ErrorMessage = "Not a valid phone number")]
-        [RegularExpression(@"[0-9]{10}", ErrorMessage = "Not a valid phone number")]
+        [RegularExpression(@"[0-9]{10}|(admin)", ErrorMessage = "Not a valid phone number")]
         public string IdA { get; set; }
 
         [DisplayName("Nhập mật khẩu")]
