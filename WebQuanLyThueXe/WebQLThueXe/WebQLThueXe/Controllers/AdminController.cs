@@ -38,6 +38,46 @@ namespace WebQLThueXe.Controllers
             return View(cateNV);
         }
 
+        public ActionResult CreateAccountAd()
+        {
+            ViewBag.MaQuyen = new SelectList(db.PhanQuyens, "MaQuyen", "TenQuyen");
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult CreateAccountAd([Bind(Include = "IdA,PassA,MaQuyen,TenUser")] Account account)
+        {
+            SetViewBagPhanQuyen();
+            
+            if (ModelState.IsValid)
+            {
+                var check_ID = db.Accounts.Where(s => s.IdA == account.IdA).FirstOrDefault();
+                if (check_ID == null)
+                {
+                    db.Configuration.ValidateOnSaveEnabled = false;
+                    account.MaQuyen = 0;
+                    db.Accounts.Add(account);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Admin");
+                }
+                else
+                {
+                    ViewBag.ErrorDangKy = "ID này đã tồn tại";
+                    return View();
+                }
+              
+            }
+
+            ViewBag.MaQuyen = new SelectList(db.PhanQuyens, "MaQuyen", "TenQuyen", account.MaQuyen);
+            return View(account);
+        }
+
+
+
+        public void SetViewBagPhanQuyen()
+        {
+            List<PhanQuyen> _phanQuyens = db.PhanQuyens.ToList();
+            ViewBag._phanQuyen = new SelectList(_phanQuyens, "MaQuyen");
+        }
     }
 }

@@ -437,6 +437,8 @@
     <Content Include="Views\Admin\ListStaff.cshtml" />
     <Content Include="Views\Admin\ListCategory.cshtml" />
     <Content Include="Views\Admin\ListCateNV.cshtml" />
+    <Content Include="Views\DangKy\CreateAccount.cshtml" />
+    <Content Include="Views\Admin\CreateAccountAd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -41,7 +41,7 @@ namespace WebQLThueXe.Controllers
                     else if (_acc.MaQuyen == 1)
                         return RedirectToAction("Index", "NhanVien");
                     else
-                        return RedirectToAction("Index", "Admin");
+                        return RedirectToAction("Index","Admin");
                 }
             }
             else

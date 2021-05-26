@@ -17,6 +17,7 @@ namespace WebQLThueXe.Controllers
             return View();
         }
 
+
         [HttpPost]
         public ActionResult Index(Account _acc)
         {
@@ -43,5 +44,7 @@ namespace WebQLThueXe.Controllers
             }
             return View();
         }
+
+      
     }
 }
