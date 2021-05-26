@@ -1,0 +1,351 @@
+﻿@model IEnumerable<WebQLThueXe.Models.Account>
+
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin TTGo</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+
+
+    <!-- Bootstrap Core and vandor -->
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css" />
+
+    <!-- Plugins css -->
+    <link rel="stylesheet" href="../assets/plugins/charts-c3/c3.min.css" />
+
+    <!-- Core css -->
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/theme1.css" />
+</head>
+
+<body class="font-montserrat">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+        </div>
+    </div>
+
+    <div id="main_content">
+
+        <div id="header_top" class="header_top">
+            <div class="container">
+                <div class="hleft">
+                    <div class="dropdown">
+                        <img class="avatar" src="../assets/images/user.jpg" alt="" data-toggle="tooltip" data-placement="right" />
+
+                    </div>
+                </div>
+                <div class="hright">
+                    <div class="dropdown">
+                        <a href="javascript:void(0)" class="nav-link icon settingbar"><i class="fa fa-gear fa-spin" data-toggle="tooltip" data-placement="right" title="Settings"></i></a>
+                        <a href="javascript:void(0)" class="nav-link icon menu_toggle"><i class="fa  fa-align-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        @*Setting-Form*@
+        <div id="rightsidebar" class="right_sidebar">
+            <a href="javascript:void(0)" class="p-3 settingbar float-right"><i class="fa fa-close"></i></a>
+            <div class="p-4">
+                <div class="mb-4">
+                    <h6 class="font-14 font-weight-bold text-muted">Font Style</h6>
+                    <div class="custom-controls-stacked font_setting">
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" name="font" value="font-opensans">
+                            <span class="custom-control-label">Open Sans Font</span>
+                        </label>
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" name="font" value="font-montserrat" checked="">
+                            <span class="custom-control-label">Montserrat Google Font</span>
+                        </label>
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" name="font" value="font-roboto">
+                            <span class="custom-control-label">Robot Google Font</span>
+                        </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-4">
+                    <h6 class="font-14 font-weight-bold text-muted">Dropdown Menu Icon</h6>
+                    <div class="custom-controls-stacked arrow_option">
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" name="marrow" value="arrow-a">
+                            <span class="custom-control-label">A</span>
+                        </label>
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" name="marrow" value="arrow-b">
+                            <span class="custom-control-label">B</span>
+                        </label>
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" name="marrow" value="arrow-c" checked="">
+                            <span class="custom-control-label">C</span>
+                        </label>
+                    </div>
+                    <h6 class="font-14 font-weight-bold mt-4 text-muted">SubMenu List Icon</h6>
+                    <div class="custom-controls-stacked list_option">
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" name="listicon" value="list-a" checked="">
+                            <span class="custom-control-label">A</span>
+                        </label>
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" name="listicon" value="list-b">
+                            <span class="custom-control-label">B</span>
+                        </label>
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" name="listicon" value="list-c">
+                            <span class="custom-control-label">C</span>
+                        </label>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <h6 class="font-14 font-weight-bold mt-4 text-muted">General Settings</h6>
+                    <ul class="setting-list list-unstyled mt-1 setting_switch">
+                        <li>
+                            <label class="custom-switch">
+                                <span class="custom-switch-description">Night Mode</span>
+                                <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input btn-darkmode">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-switch">
+                                <span class="custom-switch-description">Fix Navbar top</span>
+                                <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input btn-fixnavbar">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-switch">
+                                <span class="custom-switch-description">Header Dark</span>
+                                <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input btn-pageheader" checked="">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-switch">
+                                <span class="custom-switch-description">Min Sidebar Dark</span>
+                                <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input btn-min_sidebar">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-switch">
+                                <span class="custom-switch-description">Sidebar Dark</span>
+                                <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input btn-sidebar">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-switch">
+                                <span class="custom-switch-description">Icon Color</span>
+                                <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input btn-iconcolor">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-switch">
+                                <span class="custom-switch-description">Gradient Color</span>
+                                <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input btn-gradient">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-switch">
+                                <span class="custom-switch-description">Box Shadow</span>
+                                <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input btn-boxshadow">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-switch">
+                                <span class="custom-switch-description">RTL Support</span>
+                                <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input btn-rtl">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-switch">
+                                <span class="custom-switch-description">Box Layout</span>
+                                <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input btn-boxlayout">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <hr>
+
+            </div>
+        </div>
+
+        <div class="theme_div">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-unstyled">
+                        <li class="list-group-item mb-2">
+                            <p>Default Theme</p>
+                            <a href="index-2.html"><img src="../assets/images/themes/default.png" class="img-fluid" /></a>
+                        </li>
+                        <li class="list-group-item mb-2">
+                            <p>Night Mode Theme</p>
+                            <a href="project-dark/index.html"><img src="../assets/images/themes/dark.png" class="img-fluid" /></a>
+                        </li>
+                        <li class="list-group-item mb-2">
+                            <p>RTL Version</p>
+                            <a href="project-rtl/index.html"><img src="../assets/images/themes/rtl.png" class="img-fluid" /></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="left-sidebar" class="sidebar ">
+            <a href="../TrangChu"><h5 class="brand-name">TTGo</h5></a>
+            <nav id="left-sidebar-nav" class="sidebar-nav">
+                <ul class="metismenu">
+                    <li class="g_heading">Project</li>
+                    <li><a href="./Index"><i class="fa fa-list-ol"></i><span>Danh sách Tài khoản</span></a></li>
+                    <li>
+                        <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-user"></i><span>Nhân viên</span></a>
+                        <ul>
+                            <li><a href="#"><span>Danh sách Tài khoản</span></a></li>
+                            <li><a href="#"><span>Danh sách Nhân viên</span></a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-car"></i><span>Xe</span></a>
+                        <ul>
+                            <li><a href="#">Danh Sách Xe</a></li>
+                            <li><a href="#">Thêm Xe</a></li>
+                        </ul>
+                    </li>
+                    <li class="g_heading">Support</li>
+                    <li><a href="../Contact"><i class="fa fa-tag"></i><span>ContactUs</span></a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="page">
+
+
+            @*Headder*@
+            <div id="page_top" class="section-body top_dark">
+                <div class="container-fluid">
+                    <div class="page-header">
+                        <div class="left">
+                            <a href="javascript:void(0)" class="icon menu_toggle mr-3"><i class="fa  fa-align-left"></i></a>
+                            <h4>Danh Sách tài Khoản</h4>
+                        </div>
+                        <div class="right">
+                            <div class="input-icon xs-hide mr-4">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-icon-addon"><i class="fa fa-search"></i></span>
+                            </div>
+                            <div class="notification d-flex">
+
+                                <div class="dropdown d-flex">
+                                    <a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2" data-toggle="dropdown"><i class="fa fa-user"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a class="dropdown-item" href="page-profile.html"><i class="dropdown-icon fa fa-user-o"></i> Profile</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="../DangNhap"><i class="dropdown-icon fa fa-sign-out"></i> Sign out</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            @*Body*@
+            <br />
+            <div class="body-content">
+                <div class="">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Tên Người dùng)
+                                </th>
+                                <th>
+                                    Tên Đăng nhập
+                                </th>
+                                <th>
+                                    Mật khẩu
+                                </th>
+                                <th>
+                                    Loại Tài khoản
+                                </th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenUser)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdA)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PassA)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PhanQuyen.TenQuyen)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.IdA }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.IdA }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.IdA })
+                                    </td>
+                                </tr>
+                            }
+                        </thead>
+
+
+                    </table>
+                </div>
+
+
+                @*Footer*@
+                <div class="section-body">
+                    <footer class="footer">
+                        <div class="container-fluid">
+                            <div class="row">
+                                ©TTGo 2021. All rights reserved
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="../assets/bundles/lib.vendor.bundle.js"></script>
+
+        <script src="../assets/bundles/apexcharts.bundle.js"></script>
+        <script src="../assets/bundles/counterup.bundle.js"></script>
+        <script src="../assets/bundles/knobjs.bundle.js"></script>
+        <script src="../assets/bundles/c3.bundle.js"></script>
+
+        <script src="../assets/js/core.js"></script>
+        <script src="../ưassets/js/page/project-index.js"></script>
+        <script src="https://use.fontawesome.com/aebce4ca07.js"></script>
+        </div>
+
+</body>
+</html>
