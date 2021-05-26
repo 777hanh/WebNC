@@ -22,6 +22,11 @@ namespace WebQLThueXe.Controllers
             var car = db.Xes;
             return View(car);
         }
+        public ActionResult ListStaff()
+        {
+            var staff = db.NhanViens;
+            return View(staff);
+        }
 
 
 

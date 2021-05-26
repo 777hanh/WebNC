@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebQLThueXe.Models.Xe>
+﻿
+@model IEnumerable<WebQLThueXe.Models.NhanVien>
 <!doctype html>
 <html lang="en" dir="ltr">
 
@@ -276,33 +277,30 @@
                 <div class="">
                     <table class="table table-hover">
                         <thead>
+                            <tr>@Html.ActionLink("Create New", "Create")</tr>
+                        </thead>
+                        <thead>
                             <tr>
                                 <th>
-                                    Mã xe
+                                    Mã NV
                                 </th>
                                 <th>
-                                    Tên xe
+                                    Tên NV
                                 </th>
                                 <th>
-                                    Loại xe
+                                    Chức vụ
                                 </th>
                                 <th>
-                                    Biển số
+                                    Địa chỉ
                                 </th>
                                 <th>
-                                    Số chỗ
+                                    Mail
                                 </th>
                                 <th>
-                                    Mô tả
+                                    CMND
                                 </th>
                                 <th>
-                                    Hình ảnh
-                                </th>
-                                <th>
-                                    Tình trạng
-                                </th>
-                                <th>
-                                    Giá thuê
+                                    SDT
                                 </th>
                             </tr>
                         </thead>
@@ -311,43 +309,30 @@
                             {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.MaXe)
+                                    @Html.DisplayFor(modelItem => item.MaNV)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.TenXe)
+                                    @Html.DisplayFor(modelItem => item.TenNV)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.LoaiXe.TenLoaiXe)
+                                    @Html.DisplayFor(modelItem => item.LoaiNhanVien.TenLoaiNV)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.BienSo)
+                                    @Html.DisplayFor(modelItem => item.DiaChi)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.LoaiXe.SoCho)
+                                    @Html.DisplayFor(modelItem => item.Mail)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.MoTa)
+                                    @Html.DisplayFor(modelItem => item.CMND)
                                 </td>
                                 <td>
-                                    <img src="@Url.Content(item.HinhAnh)" style="width:100px;height:100px" />
+                                    @Html.DisplayFor(modelItem => item.SDT)
                                 </td>
+
                                 <td>
-                                    @{ 
-                                        if (item.TinhTrang == true)
-                                        {<p>Đang thuê</p>;
-                                            }
-                                        else
-                                        {
-                                        <p>Chưa thuê</p>
-                                        }
-                                        }
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.GiaLoaiXe)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.MaXe }) /
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.MaXe })
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.MaNV }) /
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.MaNV })
                                 </td>
                             </tr>
                             }
