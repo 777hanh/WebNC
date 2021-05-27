@@ -45,17 +45,16 @@ namespace WebQLThueXe.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateAccountAd([Bind(Include = "IdA,PassA,MaQuyen,TenUser")] Account account)
+        public ActionResult CreateAccountAd([Bind(Include = "IdA,PassA,ConfirmPassA,MaQuyen,TenUser")] Account account)
         {
             SetViewBagPhanQuyen();
-            
+            ViewBag.MaQuyen = new SelectList(db.PhanQuyens, "MaQuyen", "TenQuyen", account.MaQuyen);
             if (ModelState.IsValid)
             {
                 var check_ID = db.Accounts.Where(s => s.IdA == account.IdA).FirstOrDefault();
                 if (check_ID == null)
                 {
                     db.Configuration.ValidateOnSaveEnabled = false;
-                    account.MaQuyen = 0;
                     db.Accounts.Add(account);
                     db.SaveChanges();
                     return RedirectToAction("Index", "Admin");
@@ -63,12 +62,12 @@ namespace WebQLThueXe.Controllers
                 else
                 {
                     ViewBag.ErrorDangKy = "ID này đã tồn tại";
-                    return View();
+                    return View(account);
                 }
               
             }
 
-            ViewBag.MaQuyen = new SelectList(db.PhanQuyens, "MaQuyen", "TenQuyen", account.MaQuyen);
+            
             return View(account);
         }
 
