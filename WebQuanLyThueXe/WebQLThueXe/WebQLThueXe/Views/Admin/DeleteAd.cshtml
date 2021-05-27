@@ -1,0 +1,59 @@
+﻿@model WebQLThueXe.Models.Account
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Are you sure you want to delete this?</h3>
+<div class="body-content">
+    <div class="">
+
+        <table class="table table-hover">
+            <thead>
+                <tr style="text-align:left">
+                    <th>Tên User</th>
+                    <td> @Html.DisplayFor(model => model.TenUser)</td>
+                </tr>
+                <tr style="text-align:left">
+                    <th>Tên Đăng nhập (sđt)</th>
+                    <td> @Html.DisplayFor(model => model.IdA)</td>
+                </tr>
+                <tr style="text-align:left">
+                    <th>Mật khẩu</th>
+                    <td> @Html.DisplayFor(model => model.PassA)</td>
+                </tr>
+                <tr style="text-align:left">
+                    <th>Quyền</th>
+                    <td> @Html.DisplayFor(model => model.PhanQuyen.TenQuyen)</td>
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+
+
+    @*Footer*@
+
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <br />
+    <br />
+    <br />
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
+
+<div class="section-body">
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                ©TTGo 2021. All rights reserved
+            </div>
+        </div>
+    </footer>
+</div>

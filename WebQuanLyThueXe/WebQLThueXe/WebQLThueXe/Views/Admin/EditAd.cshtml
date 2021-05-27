@@ -1,6 +1,6 @@
-﻿@model IEnumerable<WebQLThueXe.Models.Account>
+﻿@model WebQLThueXe.Models.Account
 <script>
-    
+
 </script>
 <!doctype html>
 <html lang="en" dir="ltr">
@@ -15,14 +15,14 @@
 
 
     <!-- Bootstrap Core and vandor -->
-    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css" />
 
     <!-- Plugins css -->
-    <link rel="stylesheet" href="../assets/plugins/charts-c3/c3.min.css" />
+    <link rel="stylesheet" href="../../assets/plugins/charts-c3/c3.min.css" />
 
     <!-- Core css -->
-    <link rel="stylesheet" href="../assets/css/main.css" />
-    <link rel="stylesheet" href="../assets/css/theme1.css" />
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <link rel="stylesheet" href="../../assets/css/theme1.css" />
 </head>
 
 <body class="font-montserrat">
@@ -38,7 +38,7 @@
             <div class="container">
                 <div class="hleft">
                     <div class="dropdown">
-                        <img class="avatar" src="../assets/images/user.jpg" alt="" data-toggle="tooltip" data-placement="right" />
+                        <img class="avatar" src="../../assets/images/user.jpg" alt="" data-toggle="tooltip" data-placement="right" />
 
                     </div>
                 </div>
@@ -194,15 +194,15 @@
                     <ul class="list-group list-unstyled">
                         <li class="list-group-item mb-2">
                             <p>Default Theme</p>
-                            <a href="index-2.html"><img src="../assets/images/themes/default.png" class="img-fluid" /></a>
+                            <a href="index-2.html"><img src="../../assets/images/themes/default.png" class="img-fluid" /></a>
                         </li>
                         <li class="list-group-item mb-2">
                             <p>Night Mode Theme</p>
-                            <a href="project-dark/index.html"><img src="../assets/images/themes/dark.png" class="img-fluid" /></a>
+                            <a href="project-dark/index.html"><img src="../../assets/images/themes/dark.png" class="img-fluid" /></a>
                         </li>
                         <li class="list-group-item mb-2">
                             <p>RTL Version</p>
-                            <a href="project-rtl/index.html"><img src="../assets/images/themes/rtl.png" class="img-fluid" /></a>
+                            <a href="project-rtl/index.html"><img src="../../assets/images/themes/rtl.png" class="img-fluid" /></a>
                         </li>
                     </ul>
                 </div>
@@ -261,7 +261,7 @@
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                         <a class="dropdown-item" href="page-profile.html"><i class="dropdown-icon fa fa-user-o"></i> Profile</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="../DangNhap"><i class="dropdown-icon fa fa-sign-out"></i> Sign out</a>
+                                        <a class="dropdown-item" href="/DangNhap"><i class="dropdown-icon fa fa-sign-out"></i> Sign out</a>
                                     </div>
                                 </div>
                             </div>
@@ -274,84 +274,87 @@
 
 
             @*Body*@
-            <br />
-            <div class="body-content">
-                <div class="">
-                    
-                    <table class="table table-hover">
-                        <thead>
-                                @Html.ActionLink("Create New Account", "CreateAccountAd")
-                        </thead>
-                        <thead>
-                            <tr>
-                                <th>
-                                    Tên Người dùng
-                                </th>
-                                <th>
-                                    Tên Đăng nhập
-                                </th>
-                                <th>
-                                    Mật khẩu
-                                </th>
-                                <th>
-                                    Loại Tài khoản
-                                </th>
-                            </tr>
-                        </thead>
-                        <thead>
-                            @foreach (var item in Model)
-                            {
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <br />
+                <div class="body-content" style="margin:auto 14% auto 14%">
+                    <div class="">
+
+                        <table class="table table-hover" >
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.IdA)
+
+                            <thead>
                                 <tr>
+                                    <td>TÊN ĐĂNG NHẬP: </td>
+                                    <td>@Html.DisplayFor(model => model.IdA)</td>
+                                </tr>
+
+                            </thead>
+
+                            <thead>
+                                <tr>
+                                    <td>HỌ TÊN USER</td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.TenUser)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.IdA)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.PassA)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.PhanQuyen.TenQuyen)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "EditAd", new { id = item.IdA.Trim() }) / 
-                                        @Html.ActionLink("Delete", "DeleteAd", new { id = item.IdA.Trim() })
+                                        @Html.EditorFor(model => model.TenUser, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TenUser, "", new { @class = "text-danger" })
                                     </td>
                                 </tr>
-                            }
-                        </thead>
+                                <tr>
+                                    <td>MẬT KHẨU:</td>
+                                    <td>
+                                        @Html.EditorFor(model => model.PassA, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PassA, "", new { @class = "text-danger" })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>QUYÈN TRUY CẬP:</td>
+                                    <td>
+                                        @Html.DropDownList("MaQuyen", (IEnumerable<SelectListItem>)ViewBag._phanQuyens, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.MaQuyen, "", new { @class = "text-danger" })
+                                    </td>
+                                </tr>
+                            </thead>
 
 
-                    </table>
-                </div>
-
-
-                @*Footer*@
-                <div class="section-body">
-                    <footer class="footer">
-                        <div class="container-fluid">
-                            <div class="row">
-                                ©TTGo 2021. All rights reserved
+                        </table>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Save" class="btn btn-default" />
                             </div>
                         </div>
-                    </footer>
+                    </div>
+
+
+                    @*Footer*@
+                    <div class="section-body">
+                        <footer class="footer">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    ©TTGo 2021. All rights reserved
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
                 </div>
+            }
             </div>
-        </div>
+           
 
 
-        <script src="../assets/bundles/lib.vendor.bundle.js"></script>
+        <script src="../../assets/bundles/lib.vendor.bundle.js"></script>
 
-        <script src="../assets/bundles/apexcharts.bundle.js"></script>
-        <script src="../assets/bundles/counterup.bundle.js"></script>
-        <script src="../assets/bundles/knobjs.bundle.js"></script>
-        <script src="../assets/bundles/c3.bundle.js"></script>
+        <script src="../../assets/bundles/apexcharts.bundle.js"></script>
+        <script src="../../assets/bundles/counterup.bundle.js"></script>
+        <script src="../../assets/bundles/knobjs.bundle.js"></script>
+        <script src="../../assets/bundles/c3.bundle.js"></script>
 
-        <script src="../assets/js/core.js"></script>
-        <script src="../ưassets/js/page/project-index.js"></script>
+        <script src="../../assets/js/core.js"></script>
+        <script src="../../assets/js/page/project-index.js"></script>
         <script src="https://use.fontawesome.com/aebce4ca07.js"></script>
-        </div>
+    </div>
 
 </body>
 </html>

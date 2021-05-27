@@ -277,62 +277,59 @@
                 @*Body*@
                 <br />
                 <div class="body-content">
+                    <div class="form-group" style="text-align:center; color:red;">                      
+                    </div>
+                    <div class="" style="margin-left:14%;">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                <div class="" style="margin-left:14%;">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group" style="text-align:center" class="text-danger">
-                        @{
-                        if (ViewBag.ErrorDangKy != null)
-                        {<p>@Html.ViewBag.ErrorDangKy</p>}
-                        }
-                    </div>
-                    <div class="form-group">
-                        Nhập họ tên người dùng
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.TenUser, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.TenUser, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            Nhập họ tên người dùng
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TenUser, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TenUser, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        Nhập sô điện thoại (tên đăng nhập):
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.IdA, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.IdA, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            Nhập sô điện thoại (tên đăng nhập):
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.IdA, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.IdA, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        Nhập mật khẩu
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.PassA, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.PassA, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            Nhập mật khẩu
+                            <div class="col-md-10">
+                                @*@Html.EditorFor(model => model.PassA, new { htmlAttributes = new { @class = "form-control" } })*@
+                                <input type="password" name="PassA" class="form-control"/>
+                                @Html.ValidationMessageFor(model => model.PassA, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        Nhập lại mật khẩu
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ConfirmPassA, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ConfirmPassA, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            Nhập lại mật khẩu
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ConfirmPassA, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ConfirmPassA, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        Chọn quyền của tài khoản
-                        <div class="col-md-10">
+                        <div class="form-group">
+                            Chọn quyền của tài khoản
+                            <div class="col-md-10">
 
-                            @Html.DropDownList("MaQuyen", (IEnumerable<SelectListItem>)ViewBag._phanQuyens, htmlAttributes: new { @class = "form-control" })
-                            @*@Html.DropDownList("MaQuyen", null, htmlAttributes: new { @class = "form-control" })*@
-                            @Html.ValidationMessageFor(model => model.MaQuyen, "", new { @class = "text-danger" })
+                                @Html.DropDownList("MaQuyen", (IEnumerable<SelectListItem>)ViewBag._phanQuyens, htmlAttributes: new { @class = "form-control" })
+                                @*@Html.DropDownList("MaQuyen", null, htmlAttributes: new { @class = "form-control" })*@
+                                @Html.ValidationMessageFor(model => model.MaQuyen, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                    </div>
 
 
 
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10" style="text-align:center">
-                            <input type="submit" value="Create" class="btn btn-default" />
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10" style="text-align:center">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
                     @*Footer*@

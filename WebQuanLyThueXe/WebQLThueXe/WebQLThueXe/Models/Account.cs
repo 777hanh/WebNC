@@ -32,7 +32,7 @@ namespace WebQLThueXe.Models
 
         [DisplayName("Nhập mật khẩu")]
         [Required(ErrorMessage = "Không để trống")]
-        [DataType(DataType.Password)]
+        //[DataType(DataType.Password)]
         public string PassA { get; set; }
         public int MaQuyen { get; set; }
 

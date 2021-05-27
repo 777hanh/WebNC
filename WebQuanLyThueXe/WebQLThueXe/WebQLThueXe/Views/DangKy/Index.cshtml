@@ -63,7 +63,8 @@
                                 </div>
                                 <div>
                                     @Html.ValidationMessageFor(model => model.PassA, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.PassA, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mật khẩu" } })
+                                    <input type="password" name="PassA" class="form-control" placeholder="Mật khẩu" />
+                                    @*@Html.EditorFor(model => model.PassA, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mật khẩu" } })*@
                                 </div>
                                 <div>
                                     @Html.ValidationMessageFor(model => model.ConfirmPassA, "", new { @class = "text-danger" })
