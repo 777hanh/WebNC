@@ -123,29 +123,17 @@ namespace WebQLThueXe.Controllers
             return View(db.Accounts.Where(acc => acc.IdA == id.Trim()).FirstOrDefault());
         }
         [HttpPost]
-        public ActionResult EditAd(string id, Account account)
+        public async Task<ActionResult> EditAd(string id, Account account)
         {
-            try
+            SetViewBagPhanQuyen(); ViewBag.MaQuyen = new SelectList(db.PhanQuyens, "MaQuyen", "TenQuyen", account.MaQuyen);
+            if (ModelState.IsValid)
             {
                 db.Entry(account).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index", "Admin");
-            }
-            catch (DbEntityValidationException e)
-            {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                //throw;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
             return View();
+
         }
 
 
