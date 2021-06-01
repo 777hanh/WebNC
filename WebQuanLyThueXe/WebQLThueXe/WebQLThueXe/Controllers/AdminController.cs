@@ -13,6 +13,8 @@ namespace WebQLThueXe.Controllers
 {
     public class AdminController : Controller
     {
+
+
         testDBEntities db = new testDBEntities();
         //GET: Admin
         public ActionResult Index()
@@ -144,5 +146,9 @@ namespace WebQLThueXe.Controllers
             List<PhanQuyen> _phanQuyens = db.PhanQuyens.ToList();
             ViewBag._phanQuyen = new SelectList(_phanQuyens, "MaQuyen");
         }
+
+
+
+
     }
 }

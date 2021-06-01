@@ -1,0 +1,64 @@
+﻿
+@model WebQLThueXe.Models.Account
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li class="active">Profile</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+<!-- Begin Contact Main Page Area -->
+<div class="contact-main-page mt-60 mb-40 mb-md-40 mb-sm-40 mb-xs-40">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 offset-lg-1 col-md-12 order-1 order-lg-2">
+                <div class="contact-page-side-content">
+                    <h3 class="contact-page-title">BRONZE MEMBER</h3>
+                    <p class="contact-page-message mb-25">Based on the amount of money you have spent on ordering our products, you will be ranked up, the higher your rank the more total price of your order will be discounted.</p>
+                    <div class="single-contact-block">
+                        <h4>@Html.ActionLink("➔ ORDER HISTORY", "History", "Account")</h4>
+                        <p>Bạn có thể kiểm tra lại đơn hàng của bạn bằng cách vào Lịch sử đơn hàng</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 order-2 order-lg-1">
+                <div class="contact-form-content pt-sm-55 pt-xs-55">
+                    <h3 class="contact-page-title">Hello, @Model.TenUser</h3>
+                    <div class="contact-form">
+                        @using (Html.BeginForm("Profile", "Account", FormMethod.Post))
+                        {
+            <div class="form-group">
+                <label>Your First Name <span class="required"></span></label>
+                <input type="text" name="customerFirstName" value="@Model.TenUser" required>
+            </div>
+                            <div class="form-group">
+                                <label>Your Last Name <span class="required"></span></label>
+                            </div>
+                                            <div class="form-group">
+                                                <label>Your Email <span class="required"></span></label>
+                                                <input type="email" name="customerEmail" value="@Model.IdA" readonly>
+                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Your Phone</label>
+                                                                <input type="text" name="customerPhone" value="@Model.PassA">
+                                                            </div>
+                                                                            <div class="form-group mb-30">
+                                                                                <label>Your Address</label>
+                                                                                <input name="customerAddress" value="@Model.PhanQuyen.TenQuyen" />
+                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <button type="submit" value="submit" class="li-btn-3">Save</button>
+                                                                                            </div>}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

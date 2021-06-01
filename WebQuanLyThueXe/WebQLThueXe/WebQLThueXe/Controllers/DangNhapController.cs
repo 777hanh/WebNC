@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebQLThueXe.Models;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace WebQLThueXe.Controllers
 {
@@ -13,14 +14,19 @@ namespace WebQLThueXe.Controllers
     {
         testDBEntities db = new testDBEntities();
         // GET: DangNhap
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult DangNhapAccount(Account _acc)
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async  Task<ActionResult> DangNhapAccount(Account _acc)
         {
+            
             if (ModelState.IsValidField("IdA"))
             {
 
@@ -32,6 +38,8 @@ namespace WebQLThueXe.Controllers
                 }
                 else
                 {
+                    Session["Account"] = _acc;
+                    Session["AccountName"] = _acc.TenUser;
                     db.Configuration.ValidateOnSaveEnabled = false;
                     Session["IdA"] = _acc.IdA;
                     Session["PassA"] = _acc.PassA;
