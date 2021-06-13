@@ -75,6 +75,12 @@ namespace tett.Controllers
 
         }
        
+
+        public ActionResult HopDongList()
+        {
+            var results = db.HopDongs;
+            return View(results);
+        }
     }
         
 }

@@ -109,7 +109,7 @@ CREATE TABLE [dbo].[HopDong](
 CREATE TABLE [dbo].[ChiTietHopDong](
 	[SoCTHD]		int					IDENTITY (1, 1) NOT NULL,
 	[SoHD]			int					NOT NULL,
-	[MaLoaiXe]		varchar(25)         NOT NULL,
+	[MaXe]		varchar(25)         NOT NULL,
 	[soLuong]		int					NOT NULL,
 	[TraTruoc]		decimal(18,2)				NOT NULL,
 	[NgayNhan]		date				NULL,
@@ -117,7 +117,8 @@ CREATE TABLE [dbo].[ChiTietHopDong](
 	[GhiChu]		nvarchar(MAX)		NULL,
 	PRIMARY KEY CLUSTERED ([SoHD] ASC),
 	CONSTRAINT [FK_CTHopDong_HopDong] FOREIGN KEY ([SoHD]) REFERENCES [dbo].[HopDong] ([SoHD]),
-	CONSTRAINT [FK_CTHopDong_LoaiXe] FOREIGN KEY ([MaLoaiXe]) REFERENCES [dbo].[LoaiXe] ([MaLoaiXe])
+	CONSTRAINT [FK_CTHopDong_Xe] FOREIGN KEY ([MaXe]) REFERENCES [dbo].[Xe] ([MaXe])
+
 );
 
 

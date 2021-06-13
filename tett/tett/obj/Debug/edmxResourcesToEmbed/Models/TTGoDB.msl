@@ -6,7 +6,7 @@
         <MappingFragment StoreEntitySet="ChiTietHopDong">
           <ScalarProperty Name="SoCTHD" ColumnName="SoCTHD" />
           <ScalarProperty Name="SoHD" ColumnName="SoHD" />
-          <ScalarProperty Name="MaLoaiXe" ColumnName="MaLoaiXe" />
+          <ScalarProperty Name="MaXe" ColumnName="MaXe" />
           <ScalarProperty Name="soLuong" ColumnName="soLuong" />
           <ScalarProperty Name="TraTruoc" ColumnName="TraTruoc" />
           <ScalarProperty Name="NgayNhan" ColumnName="NgayNhan" />

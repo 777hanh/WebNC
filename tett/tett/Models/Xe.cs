@@ -17,6 +17,7 @@ namespace tett.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Xe()
         {
+            this.ChiTietHopDongs = new HashSet<ChiTietHopDong>();
             this.XeRas = new HashSet<XeRa>();
             this.XeVaos = new HashSet<XeVao>();
         }
@@ -30,6 +31,8 @@ namespace tett.Models
         public bool TinhTrang { get; set; }
         public string HinhAnh { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietHopDong> ChiTietHopDongs { get; set; }
         public virtual LoaiXe LoaiXe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<XeRa> XeRas { get; set; }

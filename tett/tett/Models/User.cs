@@ -25,7 +25,7 @@ namespace tett.Models
             this.ThanhToans = new HashSet<ThanhToan>();
             this.YeuCaus = new HashSet<YeuCau>();
         }
-    
+
         public int MaUser { get; set; }
         public string TenUser { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }

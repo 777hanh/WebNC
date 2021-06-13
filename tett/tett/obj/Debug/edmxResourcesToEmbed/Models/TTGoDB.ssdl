@@ -6,7 +6,7 @@
     </Key>
     <Property Name="SoCTHD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SoHD" Type="int" Nullable="false" />
-    <Property Name="MaLoaiXe" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="MaXe" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="soLuong" Type="int" Nullable="false" />
     <Property Name="TraTruoc" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="NgayNhan" Type="date" />
@@ -160,15 +160,15 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_CTHopDong_LoaiXe">
-    <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="1" />
+  <Association Name="FK_CTHopDong_Xe">
+    <End Role="Xe" Type="Self.Xe" Multiplicity="1" />
     <End Role="ChiTietHopDong" Type="Self.ChiTietHopDong" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="LoaiXe">
-        <PropertyRef Name="MaLoaiXe" />
+      <Principal Role="Xe">
+        <PropertyRef Name="MaXe" />
       </Principal>
       <Dependent Role="ChiTietHopDong">
-        <PropertyRef Name="MaLoaiXe" />
+        <PropertyRef Name="MaXe" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -333,8 +333,8 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
       <End Role="HopDong" EntitySet="HopDong" />
       <End Role="ChiTietHopDong" EntitySet="ChiTietHopDong" />
     </AssociationSet>
-    <AssociationSet Name="FK_CTHopDong_LoaiXe" Association="Self.FK_CTHopDong_LoaiXe">
-      <End Role="LoaiXe" EntitySet="LoaiXe" />
+    <AssociationSet Name="FK_CTHopDong_Xe" Association="Self.FK_CTHopDong_Xe">
+      <End Role="Xe" EntitySet="Xe" />
       <End Role="ChiTietHopDong" EntitySet="ChiTietHopDong" />
     </AssociationSet>
     <AssociationSet Name="FK_DatXe_Khach" Association="Self.FK_DatXe_Khach">

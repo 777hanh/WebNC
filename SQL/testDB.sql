@@ -56,6 +56,7 @@ CREATE TABLE [dbo].[User](
 	[SDT]			char(20)			NOT NULL, --Tên đăng nhập
 	[NganHang]		varchar(MAX)		NULL,
 	[SoTK]			char(20)			NULL,
+	[PasswordUser]	varchar(MAX)		NOT NULL,
 	PRIMARY KEY CLUSTERED ([MaUser] ASC),
 	CONSTRAINT [FK_Khach_Account_ID] FOREIGN KEY ([MaQuyen]) REFERENCES [dbo].[PhanQuyen] ([MaQuyen]),
 );
@@ -108,7 +109,7 @@ CREATE TABLE [dbo].[HopDong](
 CREATE TABLE [dbo].[ChiTietHopDong](
 	[SoCTHD]		int					IDENTITY (1, 1) NOT NULL,
 	[SoHD]			int					NOT NULL,
-	[MaLoaiXe]		varchar(25)         NOT NULL,
+	[MaXe]			varchar(25)			NOT NULL,
 	[soLuong]		int					NOT NULL,
 	[TraTruoc]		decimal(18,2)				NOT NULL,
 	[NgayNhan]		date				NULL,
@@ -116,7 +117,7 @@ CREATE TABLE [dbo].[ChiTietHopDong](
 	[GhiChu]		nvarchar(MAX)		NULL,
 	PRIMARY KEY CLUSTERED ([SoHD] ASC),
 	CONSTRAINT [FK_CTHopDong_HopDong] FOREIGN KEY ([SoHD]) REFERENCES [dbo].[HopDong] ([SoHD]),
-	CONSTRAINT [FK_CTHopDong_LoaiXe] FOREIGN KEY ([MaLoaiXe]) REFERENCES [dbo].[LoaiXe] ([MaLoaiXe])
+	CONSTRAINT [FK_CTHopDong_Xe] FOREIGN KEY ([MaXe]) REFERENCES [dbo].[Xe] ([MaXe])
 );
 
 
@@ -170,6 +171,7 @@ CREATE TABLE [dbo].[YeuCau](
 	[SoCho]			INT					NULL,
     [SoLuong]		INT					NULL,
 	[GhiChu]		nvarchar(MAX)		NULL,
+	[TinhTrang]		bit					NOT NULL		default(0),
 	PRIMARY KEY CLUSTERED ([MaYC] ASC),
 	CONSTRAINT [FK_YeuCau_KHACH] FOREIGN KEY ([MaUser]) REFERENCES [dbo].[User] ([MaUser]),
 );
@@ -178,3 +180,4 @@ CREATE TABLE [dbo].[ThamSo] (
     [TyLeTraThemKhiQuaNgay]               decimal(18,2)   NOT NULL,
     [TyLeTraThemKhiTonHaiXe]        decimal(18,2)       NOT NULL,
 );
+

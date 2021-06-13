@@ -308,6 +308,7 @@
     <Content Include="Views\NhanVien\KhachHangList.cshtml" />
     <Content Include="Views\NhanVien\RequestList.cshtml" />
     <Content Include="Views\NhanVien\DetailsRequest.cshtml" />
+    <Content Include="Views\NhanVien\HopDongList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

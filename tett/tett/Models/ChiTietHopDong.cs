@@ -16,7 +16,7 @@ namespace tett.Models
     {
         public int SoCTHD { get; set; }
         public int SoHD { get; set; }
-        public string MaLoaiXe { get; set; }
+        public string MaXe { get; set; }
         public int soLuong { get; set; }
         public decimal TraTruoc { get; set; }
         public Nullable<System.DateTime> NgayNhan { get; set; }
@@ -24,6 +24,6 @@ namespace tett.Models
         public string GhiChu { get; set; }
     
         public virtual HopDong HopDong { get; set; }
-        public virtual LoaiXe LoaiXe { get; set; }
+        public virtual Xe Xe { get; set; }
     }
 }

@@ -11,7 +11,7 @@
           </Key>
           <Property Name="SoCTHD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SoHD" Type="int" Nullable="false" />
-          <Property Name="MaLoaiXe" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="MaXe" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="soLuong" Type="int" Nullable="false" />
           <Property Name="TraTruoc" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="NgayNhan" Type="date" />
@@ -165,15 +165,15 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CTHopDong_LoaiXe">
-          <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="1" />
+        <Association Name="FK_CTHopDong_Xe">
+          <End Role="Xe" Type="Self.Xe" Multiplicity="1" />
           <End Role="ChiTietHopDong" Type="Self.ChiTietHopDong" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LoaiXe">
-              <PropertyRef Name="MaLoaiXe" />
+            <Principal Role="Xe">
+              <PropertyRef Name="MaXe" />
             </Principal>
             <Dependent Role="ChiTietHopDong">
-              <PropertyRef Name="MaLoaiXe" />
+              <PropertyRef Name="MaXe" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -338,8 +338,8 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
             <End Role="HopDong" EntitySet="HopDong" />
             <End Role="ChiTietHopDong" EntitySet="ChiTietHopDong" />
           </AssociationSet>
-          <AssociationSet Name="FK_CTHopDong_LoaiXe" Association="Self.FK_CTHopDong_LoaiXe">
-            <End Role="LoaiXe" EntitySet="LoaiXe" />
+          <AssociationSet Name="FK_CTHopDong_Xe" Association="Self.FK_CTHopDong_Xe">
+            <End Role="Xe" EntitySet="Xe" />
             <End Role="ChiTietHopDong" EntitySet="ChiTietHopDong" />
           </AssociationSet>
           <AssociationSet Name="FK_DatXe_Khach" Association="Self.FK_DatXe_Khach">
@@ -394,14 +394,14 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
           </Key>
           <Property Name="SoCTHD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SoHD" Type="Int32" Nullable="false" />
-          <Property Name="MaLoaiXe" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaXe" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="soLuong" Type="Int32" Nullable="false" />
           <Property Name="TraTruoc" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="NgayNhan" Type="DateTime" Precision="0" />
           <Property Name="NgayTra" Type="DateTime" Precision="0" />
           <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HopDong" Relationship="Self.FK_CTHopDong_HopDong" FromRole="ChiTietHopDong" ToRole="HopDong" />
-          <NavigationProperty Name="LoaiXe" Relationship="Self.FK_CTHopDong_LoaiXe" FromRole="ChiTietHopDong" ToRole="LoaiXe" />
+          <NavigationProperty Name="Xe" Relationship="Self.FK_CTHopDong_Xe" FromRole="ChiTietHopDong" ToRole="Xe" />
         </EntityType>
         <EntityType Name="DatXe">
           <Key>
@@ -442,7 +442,6 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
           <Property Name="GiaLoaiXe" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="SoCho" Type="Int32" />
           <Property Name="SoLuong" Type="Int32" />
-          <NavigationProperty Name="ChiTietHopDongs" Relationship="Self.FK_CTHopDong_LoaiXe" FromRole="LoaiXe" ToRole="ChiTietHopDong" />
           <NavigationProperty Name="DatXes" Relationship="Self.FK_DatXe_LoaiXe" FromRole="LoaiXe" ToRole="DatXe" />
           <NavigationProperty Name="Xes" Relationship="Self.FK_Xe_LoaiXe" FromRole="LoaiXe" ToRole="Xe" />
         </EntityType>
@@ -499,6 +498,7 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
           <Property Name="GiaXe" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="TinhTrang" Type="Boolean" Nullable="false" />
           <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChiTietHopDongs" Relationship="Self.FK_CTHopDong_Xe" FromRole="Xe" ToRole="ChiTietHopDong" />
           <NavigationProperty Name="LoaiXe" Relationship="Self.FK_Xe_LoaiXe" FromRole="Xe" ToRole="LoaiXe" />
           <NavigationProperty Name="XeRas" Relationship="Self.FK_XeRa_Xe" FromRole="Xe" ToRole="XeRa" />
           <NavigationProperty Name="XeVaos" Relationship="Self.FK_XeVao_Xe" FromRole="Xe" ToRole="XeVao" />
@@ -564,15 +564,15 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CTHopDong_LoaiXe">
-          <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="1" />
+        <Association Name="FK_CTHopDong_Xe">
+          <End Role="Xe" Type="Self.Xe" Multiplicity="1" />
           <End Role="ChiTietHopDong" Type="Self.ChiTietHopDong" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LoaiXe">
-              <PropertyRef Name="MaLoaiXe" />
+            <Principal Role="Xe">
+              <PropertyRef Name="MaXe" />
             </Principal>
             <Dependent Role="ChiTietHopDong">
-              <PropertyRef Name="MaLoaiXe" />
+              <PropertyRef Name="MaXe" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -714,8 +714,8 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
             <End Role="HopDong" EntitySet="HopDongs" />
             <End Role="ChiTietHopDong" EntitySet="ChiTietHopDongs" />
           </AssociationSet>
-          <AssociationSet Name="FK_CTHopDong_LoaiXe" Association="Self.FK_CTHopDong_LoaiXe">
-            <End Role="LoaiXe" EntitySet="LoaiXes" />
+          <AssociationSet Name="FK_CTHopDong_Xe" Association="Self.FK_CTHopDong_Xe">
+            <End Role="Xe" EntitySet="Xes" />
             <End Role="ChiTietHopDong" EntitySet="ChiTietHopDongs" />
           </AssociationSet>
           <AssociationSet Name="FK_DatXe_Khach" Association="Self.FK_DatXe_Khach">
@@ -770,7 +770,7 @@ warning 6002: The table/view 'testDB.dbo.XeVao' does not have a primary key defi
               <MappingFragment StoreEntitySet="ChiTietHopDong">
                 <ScalarProperty Name="SoCTHD" ColumnName="SoCTHD" />
                 <ScalarProperty Name="SoHD" ColumnName="SoHD" />
-                <ScalarProperty Name="MaLoaiXe" ColumnName="MaLoaiXe" />
+                <ScalarProperty Name="MaXe" ColumnName="MaXe" />
                 <ScalarProperty Name="soLuong" ColumnName="soLuong" />
                 <ScalarProperty Name="TraTruoc" ColumnName="TraTruoc" />
                 <ScalarProperty Name="NgayNhan" ColumnName="NgayNhan" />
