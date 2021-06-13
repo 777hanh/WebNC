@@ -1,0 +1,108 @@
+﻿@model tett.Models.HopDong
+
+@{
+    ViewBag.Title = "DetailsHopDong";
+    Layout = "~/Views/Shared/_Layout_NhanVien.cshtml";
+}
+
+
+<div>
+    <br />
+    <dl class="dl-horizontal" style="margin-left:14%">
+        <dt>
+            Mã hợp đồng
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SoHD)
+        </dd>
+        <dt>
+            Mã User
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaUser)
+        </dd>
+        <dt>
+            Tên User
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.TenUser)
+        </dd>
+        <dt>
+            Ngày ký hợp đồng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngay)
+        </dd>
+
+        <dt>
+            Ngày giao xe
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ChiTietHopDong.NgayNhan)
+        </dd>
+        <dt>
+            Ngày trả xe dự kiến
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ChiTietHopDong.NgayTra)
+        </dd>
+        <dt>
+            Nội dung
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+        <dt>
+            Điều khoản
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DieuKhoan)
+        </dd>
+        <dt>
+            Mã Xe
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChiTietHopDong.MaXe)
+        </dd>
+        <dt> Biển số xe</dt>
+        <dd>@Html.DisplayFor(model => model.ChiTietHopDong.Xe.BienSo)</dd>
+        <dt> Tên xe</dt>
+        <dd>@Html.DisplayFor(model => model.ChiTietHopDong.Xe.TenXe)</dd>
+
+        <dt>
+            Đơn giá - Giá thuê xe
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+
+        <dt>
+            Hình thức thanh toán
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HTTT)
+        </dd>
+
+        <dt>
+            Giá Tổng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaT)
+        </dd>
+
+
+
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "HopDongList")
+</p>

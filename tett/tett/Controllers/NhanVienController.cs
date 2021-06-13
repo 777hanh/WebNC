@@ -81,6 +81,21 @@ namespace tett.Controllers
             var results = db.HopDongs;
             return View(results);
         }
+
+        public ActionResult DetailsHopDong(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            HopDong yeuCau = db.HopDongs.Find(id);
+            if (yeuCau == null)
+            {
+                return HttpNotFound();
+            }
+           
+            return View(db.HopDongs.Where(yc => yc.SoHD == id).FirstOrDefault());
+        }
     }
         
 }
