@@ -96,6 +96,17 @@ namespace tett.Controllers
            
             return View(db.HopDongs.Where(yc => yc.SoHD == id).FirstOrDefault());
         }
+
+        public ActionResult DetailUserByNV(int id)
+        {
+            var a = db.Users;
+            return View(db.Users.Where(acc => acc.MaUser == id).FirstOrDefault());
+        }
+        public ActionResult DetailCateCar(string id)
+        {
+            var b = db.Xes;
+            return View(db.Xes.Where(xe => xe.MaXe.Trim()==id).FirstOrDefault());
+        }
     }
         
 }

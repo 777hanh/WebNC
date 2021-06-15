@@ -26,7 +26,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.User.TenUser)
+            @{
+                var a = Model.MaUser;
+                @Html.ActionLink(Model.User.TenUser,"DetailUserByNV",new {id=Model.MaUser})
+             }
         </dd>
         <dt>
             Ngày ký hợp đồng
@@ -70,7 +73,13 @@
         <dt> Biển số xe</dt>
         <dd>@Html.DisplayFor(model => model.ChiTietHopDong.Xe.BienSo)</dd>
         <dt> Tên xe</dt>
-        <dd>@Html.DisplayFor(model => model.ChiTietHopDong.Xe.TenXe)</dd>
+        <dd>
+            @Html.DisplayFor(model => model.ChiTietHopDong.Xe.TenXe)  -
+                @{
+                    var b = Model.ChiTietHopDong.MaXe;
+                    @Html.ActionLink("Chi tiết xe", "DetailCateCar", new { id = b })
+                }
+            </dd>
 
         <dt>
             Đơn giá - Giá thuê xe
